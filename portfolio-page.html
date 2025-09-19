@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - BriTech Prime</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="logo-container">
+                <img src="app-icon.jpeg" alt="BriTech Logo" class="logo">
+            
+            </div>
+
+
+            <style>
+               /* Logo + text */
+                .logo-container {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                cursor: pointer;
+                }
+
+                /* Logo image styling */
+                .logo {
+                height: 42px;
+                width: 42px;
+                border-radius: 12px; /* rounded corners */
+                box-shadow: 0 4px 10px rgba(106, 17, 203, 0.4); /* purple glow */
+                transition: transform 0.3s ease;
+                }
+
+                .logo:hover {
+                transform: scale(1.08); /* subtle zoom on hover */
+                }
+                
+            </style>
+            
+            <div class="nav-brand">
+                <h2>BriTech Prime</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services-page.html" class="nav-link">Services</a>
+                <a href="portfolio-page.html" class="nav-link active">Portfolio</a>
+                <a href="about-page.html" class="nav-link">About</a>
+                <a href="contact-page.html" class="nav-link">Contact</a>
+                <!-- <a href="client-portal.html" class="nav-portal">Client Portal</a> -->
+            </div>
+            <button class="get-quote-btn">Get Free Quote</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Our Work</span>
+                </div>
+                <h1>Portfolio That Speaks Innovation</h1>
+                <p>Discover how we've transformed ideas into powerful digital solutions for businesses across East Africa. Each project tells a story of innovation, creativity, and technical excellence.</p>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="card-header">
+                        <div class="dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="file-name">portfolio.tsx</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-line">
+                            <span class="keyword">interface</span> 
+                            <span class="variable">Project</span> 
+                            <span class="bracket">{</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">title</span><span class="operator">:</span> 
+                            <span class="type">string</span><span class="operator">;</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">tech</span><span class="operator">:</span> 
+                            <span class="type">string[]</span><span class="operator">;</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">impact</span><span class="operator">:</span> 
+                            <span class="string">"🚀"</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="bracket">}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="app">Mobile Apps</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="consulting">Consulting</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item" data-category="web ecommerce" data-aos="fade-up" data-delay="100">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image ecommerce-bg">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Kenyan Crafts Marketplace</h3>
+                                <p>E-commerce platform connecting local artisans with global customers</p>
+                                <div class="project-links">
+                                    <button class="btn-view" onclick="openModal('project1')">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <a href="#" class="btn-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fas fa-users"></i>
+                                <span>2K+ Users</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-chart-line"></i>
+                                <span>300% Growth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item" data-category="app" data-aos="fade-up" data-delay="200">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image app-bg">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>HealthTrack Mobile App</h3>
+                                <p>Healthcare management app for rural clinic networks</p>
+                                <div class="project-links">
+                                    <button class="btn-view" onclick="openModal('project2')">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <a href="#" class="btn-link">
+                                        <i class="fas fa-download"></i> App Store
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="tech-stack">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fas fa-hospital"></i>
+                                <span>50+ Clinics</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-clock"></i>
+                                <span>60% Time Saved</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item" data-category="web" data-aos="fade-up" data-delay="300">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image corporate-bg">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>EastAfrica Finance Portal</h3>
+                                <p>Modern corporate website with client dashboard integration</p>
+                                <div class="project-links">
+                                    <button class="btn-view" onclick="openModal('project3')">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <a href="#" class="btn-link">
+                                        <i class="fas fa-external-link-alt"></i> Live Site
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Vercel</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fas fa-rocket"></i>
+                                <span>98 Speed Score</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-eye"></i>
+                                <span>10K+ Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-item" data-category="consulting web" data-aos="fade-up" data-delay="400">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image startup-bg">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>AgriTech Startup MVP</h3>
+                                <p>Complete digital transformation for agricultural technology startup</p>
+                                <div class="project-links">
+                                    <button class="btn-view" onclick="openModal('project4')">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <a href="#" class="btn-link">
+                                        <i class="fas fa-external-link-alt"></i> Case Study
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fas fa-seedling"></i>
+                                <span>1K+ Farmers</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>$2M Funding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-item" data-category="ecommerce app" data-aos="fade-up" data-delay="500">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image delivery-bg">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Urban Delivery Network</h3>
+                                <p>Multi-vendor delivery platform with real-time tracking</p>
+                                <div class="project-links">
+                                    <button class="btn-view" onclick="openModal('project5')">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <a href="#" class="btn-link">
+                                        <i class="fas fa-play"></i> Demo Video
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="tech-stack">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Google Maps</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>5 Cities</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>10K+ Deliveries</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-item" data-category="web consulting" data-aos="fade-up" data-delay="600">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image education-bg">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>EduConnect Learning Platform</h3>
+                                <p>Comprehensive e-learning solution for African universities</p>
+                                <div class="project-links">
+                                    <button class="btn-view" onclick="openModal('project6')">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <a href="#" class="btn-link">
+                                        <i class="fas fa-external-link-alt"></i> Platform
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <div class="tech-stack">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">WebRTC</span>
+                            <span class="tech-tag">AWS S3</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>5K+ Students</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-university"></i>
+                                <span>12 Universities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Portfolio Intro Section -->
+    <section class="portfolio-intro">
+        <div class="container">
+            <h2 class="portfolio-title">Our Work Speaks for Itself</h2>
+            <p class="portfolio-text">
+                Over the years, BriTech has partnered with startups, SMEs, and enterprises to deliver high-impact 
+                digital solutions. From sleek websites and scalable apps to tailored IT systems, our portfolio showcases 
+                the creativity and technical expertise that drives client success.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <!-- Stats Section -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BriTech Stats Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stats-section {
+            padding: 60px 0;
+        }
+
+        .stats-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stats-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #6366f1;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #6366f1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .stat-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-number {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .stats-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-item {
+                padding: 30px 15px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="stats-title">Why Choose BriTech?</h2>
+            <p class="stats-subtitle">Trusted by businesses and individuals for reliable and innovative tech solutions.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-rocket stat-icon"></i>
+                    <div class="stat-number" data-target="150" data-suffix="+">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                    <p class="stat-desc">Successfully delivered web, software, and IT projects tailored to client needs.</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-star stat-icon"></i>
+                    <div class="stat-number" data-target="98" data-suffix="%">0</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                    <p class="stat-desc">Our clients love our work, thanks to quality service and timely delivery.</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-smile stat-icon"></i>
+                    <div class="stat-number" data-target="50" data-suffix="+">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                    <p class="stat-desc">Long-term relationships built on trust, professionalism, and results.</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-headphones stat-icon"></i>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                    <p class="stat-desc">Round-the-clock assistance to keep your business running smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.target);
+            const suffix = element.dataset.suffix || '';
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + suffix;
+            }, 16);
+        }
+
+        // Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && statNumber.dataset.target) {
+                        animateCounter(statNumber);
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        // Start observing when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.stat-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+
+
+
+
+    <!-- Project Modals -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BriTech Prime</h3>
+                    <p>Transforming Ideas Into Digital Solutions</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <a href="services-page.html">Web Development</a>
+                        <a href="services-page.html">App Development</a>
+                        <a href="contact-page.html">IT Support</a>
+                        <a href="#" class="btn-secondary" onclick="openConsultationForm()">Consultation</a>
+                    </div>
+
+                    <!-- Popup Form -->
+    <div id="consultationPopup" class="popup-overlay">
+        <div class="popup-form">
+            <!-- Close Button -->
+            <span class="close-btn" onclick="closeConsultationForm()">&times;</span>
+            
+            <!-- Logo + Title -->
+            <div class="popup-header">
+                <img src="app-icon.jpeg" alt="BriTech Logo" class="popup-logo">
+                <h2>BriTech Prime</h2>
+                <p class="popup-subtitle">Book your free consultation</p>
+            </div>
+            
+            <form class="consultation-form" onsubmit="handleSubmit(event)">
+                <!-- Client Info -->
+                <label>Full Name*</label>
+                <input type="text" name="name" required>
+                
+                <label>Email Address*</label>
+                <input type="email" name="email" required>
+                
+                <label>Phone Number</label>
+                <input type="tel" name="phone">
+                
+                <!-- Consultation Details -->
+                <label>Preferred Date*</label>
+                <input type="date" name="date" required>
+                
+              <label>Preferred Time*</label>
+                <div class="time-grid-container">
+                    <input type="hidden" name="time" id="selectedTime" required>
+                    <div class="time-grid" id="timeGrid">
+                        <!-- Times will be populated by JavaScript -->
+                    </div>
+                    <div class="selected-time-display" id="selectedTimeDisplay">
+                        Please select a preferred time
+                    </div>
+                </div>
+                
+                <label>Consultation Type*</label>
+                <select name="service" id="service" required onchange="toggleOtherService(this)">
+                    <option value="">Select a service</option>
+                    <option>Web Design</option>
+                    <option>App Development</option>
+                    <option>UI/UX Review</option>
+                    <option>Tech Consultation</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+                <!-- Hidden field shown only if "Other" selected -->
+                <div id="otherServiceField">
+                    <label>Please describe your service</label>
+                    <input type="text" name="other_service">
+                </div>
+                
+                <!-- Extra Info -->
+                <label>Project Description</label>
+                <textarea name="message" rows="4" placeholder="Tell us about your project..."></textarea>
+                
+                <label>Budget Range</label>
+                <select name="budget">
+                    <option value="">Select budget range</option>
+                    <option value="under-50k">Under KSh 50,000</option>
+                    <option value="50k-150k">KSh 50,000 - 150,000</option>
+                    <option value="150k-500k">KSh 150,000 - 500,000</option>
+                    <option value="500k-1m">KSh 500,000 - 1,000,000</option>
+                    <option value="over-1m">Over KSh 1,000,000</option>
+                </select>
+                
+                <label>Location Preference</label>
+                <select name="location">
+                    <option>Online</option>
+                    <option>Phone Call</option>
+                    <option>In-Person</option>
+                </select>
+                
+                <!-- File Upload -->
+                <label>Attach File (optional)</label>
+                <input type="file" name="file">
+                
+                <!-- Submit -->
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Consultation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Open consultation form
+        function openConsultationForm() {
+            const popup = document.getElementById('consultationPopup');
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close consultation form
+        function closeConsultationForm() {
+            const popup = document.getElementById('consultationPopup');
+            popup.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle other service field
+        function toggleOtherService(select) {
+            const otherField = document.getElementById('otherServiceField');
+            if (select.value === 'Other') {
+                otherField.style.display = 'block';
+                otherField.classList.add('show');
+                setTimeout(() => {
+                    otherField.style.maxHeight = '100px';
+                }, 10);
+            } else {
+                otherField.style.maxHeight = '0';
+                otherField.classList.remove('show');
+                setTimeout(() => {
+                    otherField.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Add loading state
+            submitBtn.classList.add('loading');
+            submitBtn.innerHTML = 'Submitting...';
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                alert('Thank you! Your consultation request has been submitted. We\'ll get back to you within 24 hours.');
+                closeConsultationForm();
+                
+                // Reset form
+                document.querySelector('.consultation-form').reset();
+                
+                // Reset button
+                submitBtn.classList.remove('loading');
+                submitBtn.innerHTML = 'Submit Consultation';
+                
+                // Hide other service field if visible
+                const otherField = document.getElementById('otherServiceField');
+                otherField.style.display = 'none';
+                otherField.style.maxHeight = '0';
+            }, 2000);
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('consultationPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConsultationForm();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeConsultationForm();
+            }
+        });
+
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.querySelector('input[name="date"]');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        });
+    </script>
+
+<!-- CSS -->
+<style>
+/* Button Styling */
+        .btn-secondary {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-secondary:hover::before {
+            left: 100%;
+        }
+
+        /* Popup Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Popup Form Container */
+        .popup-form {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .popup-overlay.active .popup-form {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            color: #999;
+            cursor: pointer;
+            z-index: 10;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.05);
+        }
+
+        .close-btn:hover {
+            color: #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+            transform: rotate(90deg);
+        }
+
+        /* Header Styling */
+        .popup-header {
+            text-align: center;
+            padding: 40px 30px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px 20px 0 0;
+            color: white;
+            position: relative;
+        }
+
+        .popup-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 4px solid rgba(255,255,255,0.3);
+            animation: logoFloat 3s ease-in-out infinite;
+            object-fit: cover;
+        }
+
+        .popup-header h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .popup-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Form Styling */
+        .consultation-form {
+            padding: 30px;
+        }
+
+        .consultation-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .consultation-form input,
+        .consultation-form select,
+        .consultation-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+            font-family: inherit;
+        }
+
+        .consultation-form input:focus,
+        .consultation-form select:focus,
+        .consultation-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Textarea specific styling */
+        .consultation-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* File input styling */
+        .consultation-form input[type="file"] {
+            padding: 10px;
+            background: white;
+            border: 2px dashed #ddd;
+            cursor: pointer;
+        }
+
+        .consultation-form input[type="file"]:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Other service field animation */
+        #otherServiceField {
+            overflow: hidden;
+            max-height: 0;
+            transition: all 0.3s ease;
+        }
+
+        #otherServiceField.show {
+            max-height: 100px;
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .popup-form {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .popup-header {
+                padding: 30px 20px 25px;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .consultation-form {
+                padding: 20px;
+            }
+            
+            .popup-logo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .popup-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Custom scrollbar for popup */
+        .popup-form::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .popup-form::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .popup-form::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .popup-form::-webkit-scrollbar-thumb:hover {
+            background: #5a67d8;
+        }
+
+        /* Loading animation for submit button */
+        .submit-btn.loading {
+            pointer-events: none;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+</style>
+<script>
+function openConsultationForm() {
+    const popup = document.getElementById('consultationPopup');
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeConsultationForm() {
+    const popup = document.getElementById('consultationPopup');
+    popup.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+</script>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <a href="about-page.html">About Us</a>
+                        <a href="portfolio-page.html">Portfolio</a>
+                        <a href="contact-page.html">Contact</a>
+                        <a href="#">Client Portal</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/brian-wanderi-githua-9aa738384/">LinkedIn</a>
+                        <a href="https://x.com/wandesh275">Twitter</a>
+                        <a href="https://www.facebook.com/brian.githua.370/about_overview">Facebook</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BriTech Prime. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand h2 {
+    color: #4c63d2;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link.active {
+    color: #4c63d2;
+}
+
+.nav-link:hover {
+    color: #4c63d2;
+}
+
+.nav-portal {
+    color: #4c63d2;
+    border: 2px solid #4c63d2;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-portal:hover {
+    background: #4c63d2;
+    color: white;
+}
+
+.get-quote-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.get-quote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 150px 0 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.hero-visual {
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.floating-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    min-width: 300px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(-10px); }
+    50% { transform: translateY(10px); }
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.dots {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff5f57;
+}
+
+.dots span:nth-child(2) { background: #ffbd2e; }
+.dots span:nth-child(3) { background: #28ca42; }
+
+.file-name {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.code-line {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+    color: #333;
+}
+
+.indent {
+    padding-left: 1rem;
+}
+
+.keyword { color: #af00db; }
+.variable { color: #001080; }
+.property { color: #0451a5; }
+.string { color: #008000; }
+.operator, .bracket { color: #000; }
+.type { color: #267f99; }
+
+/* Filter Section */
+.filter-section {
+    padding: 50px 0;
+    background: white;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: #666;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    border-color: #4c63d2;
+    background: #4c63d2;
+    color: white;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    padding: 50px 0 100px;
+    background: white;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.portfolio-item {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-item:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.ecommerce-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.app-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.corporate-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.startup-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.delivery-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.education-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.portfolio-image:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.overlay-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.overlay-content p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-view,
+.btn-link {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-view {
+    background: #4c63d2;
+    color: white;
+}
+
+.btn-link {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.btn-view:hover,
+.btn-link:hover {
+    transform: translateY(-2px);
+}
+
+.portfolio-info {
+    padding: 1.5rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    background: rgba(76, 99, 210, 0.1);
+    color: #4c63d2;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.project-metrics {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.metric {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.metric i {
+    color: #4c63d2;
+}
+
+/* Stats Section */
+.stat-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #4c63d2;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #666;
+    font-weight: 500;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    text-align: center;
+    color: white;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: white;
+    color: #4c63d2;
+    border: 2px solid white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #4c63d2;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    margin: 20px;
+    transform: translateY(30px);
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.modal-project {
+    padding: 2rem;
+}
+
+.modal-project h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.modal-project .project-overview {
+    margin-bottom: 2rem;
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.modal-section {
+    margin-bottom: 2rem;
+}
+
+.modal-section h3 {
+    color: #4c63d2;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.challenge-list,
+.solution-list,
+.result-list {
+    list-style: none;
+    padding: 0;
+}
+
+.challenge-list li,
+.solution-list li,
+.result-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.challenge-list li::before {
+    content: '⚡';
+    position: absolute;
+    left: 0;
+    color: #ff6b6b;
+}
+
+.solution-list li::before {
+    content: '🔧';
+    position: absolute;
+    left: 0;
+}
+
+.result-list li::before {
+    content: '📈';
+    position: absolute;
+    left: 0;
+}
+
+.tech-details {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.tech-category h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tech-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-category li {
+    background: white;
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Footer */
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand h3 {
+    color: #4c63d2;
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+    color: #ccc;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.link-group h4 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.link-group a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.link-group a:hover {
+    color: #4c63d2;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    text-align: center;
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-visual {
+        display: none;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .modal-content {
+        margin: 10px;
+        max-height: 95vh;
+    }
+
+    .modal-project {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-item {
+        margin-bottom: 1rem;
+    }
+}
+
+/* stats sections new */
+
+/* Stats Section */
+.stats-section {
+    background: #f9f9fc;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.stats-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4a3aff;
+    margin-bottom: 10px;
+}
+
+.stats-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #4a3aff;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.stat-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.stat-item.projects .stat-number::after {
+    content: "+";
+}
+
+.stat-item.clients .stat-number::after {
+    content: "%";
+}
+
+.stat-item.support .stat-number::after {
+    content: "/7";
+}
+
+.stat-number {
+    font-family: 'Poppins', sans-serif; /* or your site font */
+    font-variant-numeric: lining-nums; /* ensures digits & symbols align */
+    letter-spacing: -1px; /* optional tweak */
+}
+
+/* working one */
+
+/* Stats Section */
+.stats-section {
+    background: #f9f9fc;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.stats-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4a3aff;
+    margin-bottom: 10px;
+}
+
+.stats-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #4a3aff;
+    margin-bottom: 10px;
+
+    /* Fix for missing symbols */
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+    font-variant-numeric: lining-nums;
+    letter-spacing: -0.5px;
+    display: inline-block;
+    white-space: nowrap; /* keeps 24/7 together */
+}
+
+/* Stats Section Icons */
+.stat-icon {
+    font-size: 2.2rem;
+    color: #4a3aff;
+    margin-bottom: 12px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover .stat-icon {
+    transform: scale(1.2);
+    color: #6c63ff;
+}
+
+
+
+
+/* Portfolio Intro */
+.portfolio-intro {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: #f9f9fc;
+}
+
+.portfolio-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4a3aff;
+    margin-bottom: 15px;
+}
+
+.portfolio-text {
+    font-size: 1.05rem;
+    color: #444;
+    max-width: 850px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+
+</style>
+
+<script>
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            const filterValue = button.getAttribute('data-filter');
+
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all') {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    if (item.getAttribute('data-category').includes(filterValue)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                }
+            });
+        });
+    });
+});
+
+// Modal functionality
+const projectData = {
+    project1: {
+        title: "Kenyan Crafts Marketplace",
+        overview: "A comprehensive e-commerce platform designed to connect local Kenyan artisans with global customers, featuring secure payment processing, multi-vendor support, and real-time inventory management.",
+        challenges: [
+            "Complex multi-vendor payment splitting",
+            "International shipping calculations",
+            "Mobile-first design for local artisans",
+            "Integration with local payment methods"
+        ],
+        solutions: [
+            "Implemented Stripe Connect for seamless payment distribution",
+            "Built custom shipping calculator with multiple carrier APIs",
+            "Designed progressive web app for offline capability",
+            "Integrated M-Pesa and local banking solutions"
+        ],
+        results: [
+            "2,000+ active users within first 6 months",
+            "300% increase in artisan sales",
+            "98.5% customer satisfaction rating",
+            "Featured in Kenya's top e-commerce platforms"
+        ],
+        tech: {
+            frontend: ["React", "TypeScript", "Tailwind CSS"],
+            backend: ["Node.js", "Express", "MongoDB"],
+            payments: ["Stripe", "M-Pesa API"],
+            deployment: ["AWS", "CloudFront", "S3"]
+        }
+    },
+    project2: {
+        title: "HealthTrack Mobile App",
+        overview: "A comprehensive healthcare management system designed for rural clinic networks, featuring patient records, appointment scheduling, and telemedicine capabilities.",
+        challenges: [
+            "Limited internet connectivity in rural areas",
+            "Complex patient data synchronization",
+            "Multi-language support requirements",
+            "HIPAA compliance and data security"
+        ],
+        solutions: [
+            "Implemented offline-first architecture with sync capabilities",
+            "Built robust data conflict resolution system",
+            "Created intuitive UI with local language support",
+            "Implemented end-to-end encryption and audit trails"
+        ],
+        results: [
+            "50+ clinics actively using the platform",
+            "60% reduction in administrative time",
+            "95% patient satisfaction score",
+            "Zero security incidents since launch"
+        ],
+        tech: {
+            mobile: ["Flutter", "Dart"],
+            backend: ["Python", "Django", "PostgreSQL"],
+            cloud: ["AWS", "Lambda", "RDS"],
+            apis: ["Firebase", "Twilio", "Google Maps"]
+        }
+    },
+    project3: {
+        title: "EastAfrica Finance Portal",
+        overview: "A modern corporate website with integrated client dashboard, featuring real-time financial data, document management, and secure client communications.",
+        challenges: [
+            "High-performance requirements for financial data",
+            "Complex user permission system",
+            "Integration with legacy banking systems",
+            "Mobile responsiveness for executive users"
+        ],
+        solutions: [
+            "Implemented Next.js with server-side rendering",
+            "Built role-based access control system",
+            "Created secure API gateway for legacy integration",
+            "Designed mobile-first responsive interface"
+        ],
+        results: [
+            "98 Google PageSpeed score",
+            "10,000+ monthly active users",
+            "40% increase in client engagement",
+            "Featured in financial technology awards"
+        ],
+        tech: {
+            frontend: ["Next.js", "TypeScript", "React"],
+            backend: ["Node.js", "PostgreSQL"],
+            deployment: ["Vercel", "AWS RDS"],
+            security: ["Auth0", "JWT", "SSL"]
+        }
+    },
+    project4: {
+        title: "AgriTech Startup MVP",
+        overview: "Complete digital transformation for an agricultural technology startup, including platform development, system architecture consultation, and go-to-market strategy.",
+        challenges: [
+            "Rapid MVP development timeline",
+            "Scalable architecture for growth",
+            "Integration with IoT sensors",
+            "Farmer education and adoption"
+        ],
+        solutions: [
+            "Implemented agile development methodology",
+            "Designed microservices architecture",
+            "Built real-time IoT data processing pipeline",
+            "Created comprehensive training and onboarding system"
+        ],
+        results: [
+            "1,000+ farmers onboarded in first year",
+            "$2M Series A funding secured",
+            "25% increase in crop yields for users",
+            "Expansion to 3 additional countries"
+        ],
+        tech: {
+            frontend: ["Vue.js", "Nuxt.js", "Chart.js"],
+            backend: ["Laravel", "PHP", "MySQL"],
+            infrastructure: ["Docker", "Kubernetes", "AWS"],
+            iot: ["MQTT", "InfluxDB", "Grafana"]
+        }
+    },
+    project5: {
+        title: "Urban Delivery Network",
+        overview: "A multi-vendor delivery platform with real-time tracking, route optimization, and comprehensive vendor management system.",
+        challenges: [
+            "Real-time GPS tracking accuracy",
+            "Complex route optimization algorithms",
+            "Multi-vendor coordination",
+            "Peak hour scalability"
+        ],
+        solutions: [
+            "Implemented WebSocket for real-time updates",
+            "Built custom route optimization using Google Maps API",
+            "Created vendor dashboard with performance analytics",
+            "Designed auto-scaling infrastructure"
+        ],
+        results: [
+            "Operating in 5 major cities",
+            "10,000+ successful deliveries monthly",
+            "30% improvement in delivery times",
+            "4.8/5 customer satisfaction rating"
+        ],
+        tech: {
+            mobile: ["React Native", "Redux"],
+            backend: ["Express.js", "Node.js", "Redis"],
+            database: ["MongoDB", "PostgreSQL"],
+            maps: ["Google Maps API", "Places API"]
+        }
+    },
+    project6: {
+        title: "EduConnect Learning Platform",
+        overview: "A comprehensive e-learning solution designed for African universities, featuring video conferencing, assignment management, and progress tracking.",
+        challenges: [
+            "Supporting thousands of concurrent users",
+            "Video streaming in low-bandwidth areas",
+            "Multi-language content management",
+            "Integration with existing university systems"
+        ],
+        solutions: [
+            "Implemented CDN for global content delivery",
+            "Built adaptive streaming for various connection speeds",
+            "Created flexible content management system",
+            "Developed APIs for seamless system integration"
+        ],
+        results: [
+            "5,000+ active students",
+            "12 universities using the platform",
+            "85% student engagement rate",
+            "Winner of EdTech Innovation Award 2024"
+        ],
+        tech: {
+            frontend: ["React", "WebRTC", "Socket.io"],
+            backend: ["Django", "Python", "Celery"],
+            storage: ["AWS S3", "CloudFront"],
+            streaming: ["WebRTC", "FFmpeg", "HLS"]
+        }
+    }
+};
+
+function openModal(projectId) {
+    const modal = document.getElementById('modal-overlay');
+    const modalBody = document.getElementById('modal-body');
+    const project = projectData[projectId];
+
+    if (!project) return;
+
+    modalBody.innerHTML = `
+        <div class="modal-project">
+            <h2>${project.title}</h2>
+            <p class="project-overview">${project.overview}</p>
+            
+            <div class="modal-section">
+                <h3>Challenges</h3>
+                <ul class="challenge-list">
+                    ${project.challenges.map(challenge => `<li>${challenge}</li>`).join('')}
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Our Solutions</h3>
+                <ul class="solution-list">
+                    ${project.solutions.map(solution => `<li>${solution}</li>`).join('')}
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Results & Impact</h3>
+                <ul class="result-list">
+                    ${project.results.map(result => `<li>${result}</li>`).join('')}
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Technology Stack</h3>
+                <div class="tech-details">
+                    <div class="tech-grid">
+                        ${Object.entries(project.tech).map(([category, techs]) => `
+                            <div class="tech-category">
+                                <h4>${category}</h4>
+                                <ul>
+                                    ${techs.map(tech => `<li>${tech}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal-overlay');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add scroll effect to navbar
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+    } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    }
+});
+
+// Intersection Observer for animations
+
+// Observe portfolio items
+document.querySelectorAll('.portfolio-item').forEach(item => {
+    observer.observe(item);
+});
+
+// Observe stat items
+document.querySelectorAll('.stat-item').forEach(item => {
+    observer.observe(item);
+});
+
+// Counter animation for stats
+const animateCounter = (element, target) => {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        if (target.toString().includes('%')) {
+            element.textContent = Math.floor(current) + '%';
+        } else if (target.toString().includes('+')) {
+            element.textContent = Math.floor(current) + '+';
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 30);
+};
+
+// Animate counters when in view
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const number = entry.target.querySelector('.stat-number');
+            const target = number.textContent;
+            const numericTarget = parseInt(target.replace(/\D/g, ''));
+            
+            if (!entry.target.animated) {
+                animateCounter(number, numericTarget);
+                entry.target.animated = true;
+            }
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-item').forEach(item => {
+    statsObserver.observe(item);
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+</script>
+
+
+<!-- Email JS Below -->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script src="emailJS.js"></script>
+
+
+</html>

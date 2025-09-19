@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | BriTech Prime</title>
+    <meta name="description" content="Terms of Service for BriTech Prime - Professional Web & App Development Solutions in Nairobi">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .brand-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            margin-top: 30px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .breadcrumb span {
+            margin: 0 10px;
+            opacity: 0.6;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            margin: -50px auto 0;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+            padding: 80px 60px 60px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .content-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e74c3c;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 2px;
+        }
+
+        .section-content {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .section-content p {
+            margin-bottom: 18px;
+        }
+
+        .section-content ul {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .section-content li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .section-content li::marker {
+            color: #e74c3c;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff5f5, #fed7d7);
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.1);
+        }
+
+        .highlight-box h4 {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-left: 5px solid #f59e0b;
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.1);
+        }
+
+        .warning-box h4 {
+            color: #92400e;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: white;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-table th {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            font-weight: 600;
+        }
+
+        .pricing-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #e74c3c;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .main-content {
+                padding: 60px 30px 40px;
+                margin-top: -30px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .breadcrumb {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+
+            .footer-links a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 40px 20px 30px;
+            }
+
+            .highlight-box,
+            .warning-box {
+                padding: 20px;
+            }
+
+            .contact-info {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .content-section:nth-child(2) { animation-delay: 0.1s; }
+        .content-section:nth-child(3) { animation-delay: 0.2s; }
+        .content-section:nth-child(4) { animation-delay: 0.3s; }
+        .content-section:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="brand-logo">BriTech Prime</div>
+                <h1 class="page-title">Terms of Service</h1>
+                <p class="page-subtitle">
+                    These terms govern your use of our services and establish the framework for our professional relationship.
+                </p>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>›</span>
+                    <span>Terms of Service</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="main-content">
+            <div class="content-section">
+                <h2 class="section-title">1. Agreement to Terms</h2>
+                <div class="section-content">
+                    <p>By accessing and using BriTech Prime's services, website, or engaging with us for web and app development projects, you agree to be bound by these Terms of Service ("Terms"). These Terms constitute a legally binding agreement between you ("Client," "you," or "your") and BriTech Prime ("we," "us," or "our").</p>
+                    
+                    <div class="warning-box">
+                        <h4>Important Notice:</h4>
+                        <p>If you do not agree to all of these Terms, you must not use our services or website. Your continued use of our services constitutes acceptance of any modifications to these Terms.</p>
+                    </div>
+                    
+                    <p>These Terms apply to all services including but not limited to:</p>
+                    <ul>
+                        <li>Web development and design services</li>
+                        <li>Mobile application development</li>
+                        <li>E-commerce solutions</li>
+                        <li>Custom software development</li>
+                        <li>UI/UX design services</li>
+                        <li>Cloud solutions and hosting</li>
+                        <li>Consulting and technical support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">2. Service Descriptions and Scope</h2>
+                <div class="section-content">
+                    <p>BriTech Prime provides professional web and mobile application development services to businesses and individuals in Kenya and internationally. Our services are customized based on specific project requirements outlined in individual project agreements.</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Our Service Categories:</h4>
+                        <p><strong>Development Services:</strong> Custom web applications, mobile apps, e-commerce platforms, and software solutions built to your specifications.</p>
+                        <p><strong>Design Services:</strong> User interface design, user experience optimization, branding, and visual design elements.</p>
+                        <p><strong>Technical Services:</strong> Cloud deployment, hosting setup, API integration, database design, and system architecture.</p>
+                        <p><strong>Ongoing Support:</strong> Maintenance, updates, bug fixes, and technical support for completed projects.</p>
+                    </div>
+                    
+                    <p>Each project begins with a detailed consultation to understand your requirements. We provide:</p>
+                    <ul>
+                        <li>Free initial consultation and project assessment</li>
+                        <li>Detailed project proposals with timelines and costs</li>
+                        <li>Regular progress updates and milestone reviews</li>
+                        <li>Post-launch support and maintenance options</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">3. Project Process and Deliverables</h2>
+                <div class="section-content">
+                    <p>Our standard project workflow ensures clear communication and successful delivery:</p>
+                    
+                    <div class="table-container">
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Phase</th>
+                                    <th>Duration</th>
+                                    <th>Deliverables</th>
+                                    <th>Client Requirements</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Discovery</strong></td>
+                                    <td>1-2 weeks</td>
+                                    <td>Project scope, wireframes, technical specifications</td>
+                                    <td>Requirements gathering, content provision</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Design</strong></td>
+                                    <td>2-3 weeks</td>
+                                    <td>UI/UX designs, mockups, prototypes</td>
+                                    <td>Feedback and approval on designs</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Development</strong></td>
+                                    <td>4-8 weeks</td>
+                                    <td>Functional application, testing, documentation</td>
+                                    <td>Regular review and feedback</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Launch</strong></td>
+                                    <td>1 week</td>
+                                    <td>Live deployment, training, support setup</td>
+                                    <td>Final approval and go-live confirmation</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>Timelines may vary based on project complexity, client responsiveness, and scope changes. We provide regular updates and maintain transparent communication throughout the process.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">4. Payment Terms and Pricing</h2>
+                <div class="section-content">
+                    <p>Our pricing is transparent and based on project scope, complexity, and timeline. All costs are outlined in the project proposal before work begins.</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Payment Structure:</h4>
+                        <p><strong>Project Deposit:</strong> 50% of total project cost due upon contract signing</p>
+                        <p><strong>Milestone Payments:</strong> Progress-based payments as outlined in project agreement</p>
+                        <p><strong>Final Payment:</strong> Remaining balance due before final delivery and launch</p>
+                        <p><strong>Monthly Retainer:</strong> For ongoing maintenance and support services</p>
+                    </div>
+                    
+                    <p>Payment terms and accepted methods:</p>
+                    <ul>
+                        <li>Payment due within 7 days of invoice receipt</li>
+                        <li>Accepted methods: Bank transfer, M-Pesa, credit/debit cards</li>
+                        <li>Late payment fee of 2% per month on overdue amounts</li>
+                        <li>Work suspension after 14 days of overdue payment</li>
+                        <li>All prices quoted in Kenyan Shillings (KSH) unless otherwise specified</li>
+                    </ul>
+                    
+                    <div class="warning-box">
+                        <h4>Additional Costs:</h4>
+                        <p>Hosting, domain registration, third-party services, and premium plugins/extensions are charged separately. All additional costs are discussed and approved before implementation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">5. Client Responsibilities and Obligations</h2>
+                <div class="section-content">
+                    <p>Successful project delivery requires active client participation and timely provision of necessary materials:</p>
+                    
+                    <ul>
+                        <li><strong>Content and Materials:</strong> Provide all text, images, videos, and other content in agreed formats and timelines</li>
+                        <li><strong>Feedback and Approvals:</strong> Review deliverables and provide feedback within agreed timeframes (typically 48-72 hours)</li>
+                        <li><strong>Access Credentials:</strong> Provide necessary access to hosting, domains, existing systems, and third-party services</li>
+                        <li><strong>Decision Making:</strong> Make timely decisions on design, functionality, and project direction</li>
+                        <li><strong>Testing and Acceptance:</strong> Thoroughly test delivered work and communicate any issues promptly</li>
+                        <li><strong>Communication:</strong> Maintain regular communication and respond to requests within reasonable timeframes</li>
+                    </ul>
+                    
+                    <p>Delays in client deliverables or feedback may result in project timeline adjustments and potential additional costs.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">6. Intellectual Property Rights</h2>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <h4>Your Content and Materials:</h4>
+                        <p>You retain full ownership of all content, materials, and intellectual property you provide. You grant us a license to use these materials solely for the purpose of delivering your project.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>Custom Development Work:</h4>
+                        <p>Upon full payment, you receive ownership of all custom code, designs, and deliverables created specifically for your project, excluding any third-party components or our proprietary tools and frameworks.</p>
+                    </div>
+                    
+                    <p>Intellectual property considerations:</p>
+                    <ul>
+                        <li><strong>Third-Party Components:</strong> Open-source libraries, frameworks, and plugins retain their original licenses</li>
+                        <li><strong>BriTech Prime Tools:</strong> Our proprietary development tools, templates, and methodologies remain our property</li>
+                        <li><strong>Portfolio Rights:</strong> We may showcase completed projects in our portfolio unless confidentiality is specifically requested</li>
+                        <li><strong>Code Attribution:</strong> We may include attribution comments in code for maintenance purposes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">7. Warranties and Disclaimers</h2>
+                <div class="section-content">
+                    <p>We stand behind the quality of our work and provide specific warranties for our services:</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Our Warranties:</h4>
+                        <p><strong>Bug-Free Delivery:</strong> 90-day warranty on all custom development work against programming defects</p>
+                        <p><strong>Performance Standards:</strong> Code meets agreed performance and functionality requirements</p>
+                        <p><strong>Best Practices:</strong> Development follows industry standards and best practices</p>
+                        <p><strong>Security Standards:</strong> Basic security measures implemented according to current standards</p>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4>Limitations and Disclaimers:</h4>
+                        <p>We do not warrant that our services will be uninterrupted, error-free, or completely secure. Internet-based applications are subject to various risks including server downtime, security vulnerabilities, and third-party service interruptions.</p>
+                        <p>We are not responsible for data loss, security breaches, or damages resulting from client modifications to delivered work, third-party services, or events beyond our reasonable control.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">8. Limitation of Liability</h2>
+                <div class="section-content">
+                    <p>To the maximum extent permitted by law, BriTech Prime's liability is limited as follows:</p>
+                    
+                    <ul>
+                        <li><strong>Maximum Liability:</strong> Our total liability for any claim shall not exceed the total amount paid by you for the specific services giving rise to the claim</li>
+                        <li><strong>Consequential Damages:</strong> We shall not be liable for indirect, incidental, special, consequential, or punitive damages</li>
+                        <li><strong>Business Losses:</strong> We are not liable for loss of profits, revenue, data, or business opportunities</li>
+                        <li><strong>Third-Party Services:</strong> We are not responsible for failures or issues with third-party services, hosting providers, or external integrations</li>
+                    </ul>
+                    
+                    <p>This limitation applies regardless of the legal theory under which damages are sought, whether in contract, tort, or otherwise.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">9. Termination and Cancellation</h2>
+                <div class="section-content">
+                    <p>Either party may terminate the agreement under certain circumstances:</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Client Termination Rights:</h4>
+                        <p>You may terminate the project at any time with written notice. You will be charged for all work completed to the termination date, plus any non-refundable third-party costs incurred.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h4>BriTech Prime Termination Rights:</h4>
+                        <p>We may terminate the agreement for non-payment, failure to provide necessary materials, or breach of terms. We will provide 7 days written notice before termination.</p>
+                    </div>
+                    
+                    <p>Upon termination:</p>
+                    <ul>
+                        <li>All completed work will be delivered to you</li>
+                        <li>Final invoices will be issued for work completed</li>
+                        <li>Source files and access credentials will be transferred after final payment</li>
+                        <li>Confidentiality obligations continue indefinitely</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">10. Support and Maintenance</h2>
+                <div class="section-content">
+                    <p>We offer various levels of ongoing support for completed projects:</p>
+                    
+                    <div class="table-container">
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Support Level</th>
+                                    <th>Included Services</th>
+                                    <th>Response Time</th>
+                                    <th>Monthly Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Basic</strong></td>
+                                    <td>Bug fixes, security updates, backup monitoring</td>
+                                    <td>48 hours</td>
+                                    <td>KSH 35,000 - 55,000</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Standard</strong></td>
+                                    <td>Above + content updates, performance optimization</td>
+                                    <td>24 hours</td>
+                                    <td>KSH 75,000 - 100,000</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Premium</strong></td>
+                                    <td>Above + priority support, regular improvements</td>
+                                    <td>4 hours</td>
+                                    <td>KSH 150,000+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>All projects include 30 days of basic support after launch. Extended support agreements are recommended for business-critical applications.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">11. Confidentiality and Non-Disclosure</h2>
+                <div class="section-content">
+                    <p>We respect the confidential nature of your business information and maintain strict confidentiality standards:</p>
+                    
+                    <ul>
+                        <li><strong>Confidential Information:</strong> All business plans, strategies, customer data, proprietary processes, and sensitive information shared with us</li>
+                        <li><strong>Protection Measures:</strong> Secure storage, limited access, encrypted communication, and secure development practices</li>
+                        <li><strong>Team Access:</strong> Only team members directly working on your project have access to confidential information</li>
+                        <li><strong>Indefinite Duration:</strong> Confidentiality obligations continue indefinitely, even after project completion</li>
+                    </ul>
+                    
+                    <p>We will not disclose your confidential information to third parties without your explicit written consent, except as required by law or court order.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">12. Dispute Resolution and Governing Law</h2>
+                <div class="section-content">
+                    <p>We prefer to resolve disputes through direct communication and mutual agreement. However, formal dispute resolution procedures are outlined below:</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Dispute Resolution Process:</h4>
+                        <p><strong>Step 1:</strong> Direct negotiation between parties for 30 days</p>
+                        <p><strong>Step 2:</strong> Mediation with a neutral third party if negotiation fails</p>
+                        <p><strong>Step 3:</strong> Arbitration under Kenyan law if mediation is unsuccessful</p>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Governing Law:</strong> These Terms are governed by the laws of the Republic of Kenya</li>
+                        <li><strong>Jurisdiction:</strong> Courts of Nairobi, Kenya have exclusive jurisdiction</li>
+                        <li><strong>Language:</strong> All proceedings shall be conducted in English</li>
+                        <li><strong>Costs:</strong> Each party bears their own legal costs unless otherwise ordered</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">13. Changes to Terms</h2>
+                <div class="section-content">
+                    <p>We may update these Terms from time to time to reflect changes in our services, legal requirements, or business practices:</p>
+                    
+                    <ul>
+                        <li><strong>Notification:</strong> We will notify you of material changes via email and website notice</li>
+                        <li><strong>Effective Date:</strong> Changes become effective 30 days after notification</li>
+                        <li><strong>Ongoing Projects:</strong> Existing project agreements continue under original terms unless mutually agreed otherwise</li>
+                        <li><strong>Acceptance:</strong> Continued use of services constitutes acceptance of updated Terms</li>
+                    </ul>
+                    
+                    <p>If you do not agree to updated Terms, you may terminate the agreement as outlined in Section 9.</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Questions About These Terms?</h3>
+                <p>If you have questions about these Terms of Service or need clarification on any provisions, please contact us:</p>
+                <p><strong>Email:</strong> <a href="mailto:legal@britechprime.com">legal@britechprime.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+254713738815">+254 713738815</a></p>
+                <p><strong>Address:</strong> Nairobi, Kenya</p>
+                <p><strong>Business Hours:</strong> Monday - Friday, 8:00 AM - 6:00 PM EAT</p>
+            </div>
+
+            <div class="last-updated">
+                <p><strong>Last Updated:</strong> January 15, 2025</p>
+                <p><strong>Effective Date:</strong> January 15, 2025</p>
+                <p><strong>Version:</strong> 2.0</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services-page.html">Services</a>
+                <a href="about-page.html">About</a>
+                <a href="contact-page.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+            <p>&copy; 2025 BriTech Prime. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <!-- Email JS Below -->
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script src="emailJS.js"></script>
+
+
+</body>
+</html>

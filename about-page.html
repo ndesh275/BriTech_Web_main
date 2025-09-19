@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BriTech Prime</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="app-icon.jpeg" alt="BriTech Logo" class="logo">
+            
+            </div>
+
+            <style>
+               /* Logo + text */
+                .logo-container {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                cursor: pointer;
+                }
+
+                /* Logo image styling */
+                .logo {
+                height: 42px;
+                width: 42px;
+                border-radius: 12px; /* rounded corners */
+                box-shadow: 0 4px 10px rgba(106, 17, 203, 0.4); /* purple glow */
+                transition: transform 0.3s ease;
+                }
+
+                .logo:hover {
+                transform: scale(1.08); /* subtle zoom on hover */
+                }
+                
+            </style>
+            
+            <div class="nav-brand">
+                <h2>BriTech Prime</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services-page.html" class="nav-link">Services</a>
+                <a href="portfolio-page.html" class="nav-link">Portfolio</a>
+                <a href="about-page.html" class="nav-link active">About</a>
+                <a href="contact-page.html" class="nav-link">Contact</a>
+                <!-- <a href="client-portal.html" class="nav-portal">Client Portal</a> -->
+            </div>
+            <button class="get-quote-btn">Get Free Quote</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-rocket"></i>
+                    <span>About BriTech Prime</span>
+                </div>
+                <h1>Pioneering Digital Innovation in East Africa</h1>
+                <p>We're a passionate team of tech innovators dedicated to transforming businesses through cutting-edge digital solutions and exceptional service delivery.</p>
+            </div>
+            <div class="hero-visual">
+             <div class="hero-visual">
+            <div class="stats-grid">
+                <div class="stat-card" data-animate="50">
+                    <div class="stat-number" data-target="50" data-suffix="+">0</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-card" data-animate="35">
+                    <div class="stat-number" data-target="35" data-suffix="+">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-card" data-animate="3">
+                    <div class="stat-number" data-target="3" data-suffix="+">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+                </div>
+            </div>
+    </section>
+
+
+    <script>
+        // Counter Animation Function
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.target);
+            const suffix = element.dataset.suffix || '';
+            const duration = 2000; // 2 seconds
+            const step = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + suffix;
+            }, 16);
+        }
+
+        // Intersection Observer to trigger animation when visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && statNumber.dataset.target) {
+                        // Add slight delay for staggered effect
+                        setTimeout(() => {
+                            animateCounter(statNumber);
+                        }, 300);
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5 // Trigger when 50% visible
+        });
+
+        // Alternative: Start animation immediately when page loads
+        function startCountingOnLoad() {
+            const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            statNumbers.forEach((statNumber, index) => {
+                setTimeout(() => {
+                    animateCounter(statNumber);
+                }, index * 200); // Stagger each counter by 200ms
+            });
+        }
+
+        // Start counting when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Option 1: Start immediately on page load
+            startCountingOnLoad();
+            
+            // Option 2: Start when section comes into view (uncomment if preferred)
+            // document.querySelectorAll('.stat-card').forEach(card => {
+            //     observer.observe(card);
+            // });
+        });
+
+    </script>    
+
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Story</h2>
+                    <p>Founded with a vision to bridge the digital divide in East Africa, BriTech Prime emerged from a simple belief: every business, regardless of size, deserves access to world-class technology solutions.</p>
+                    
+                    <p>What started as a small tech consultancy in Nairobi has grown into a comprehensive digital solutions provider, serving clients across multiple industries and helping them navigate the complexities of digital transformation.</p>
+                    
+                    <p>Our journey has been marked by continuous learning, innovation, and an unwavering commitment to our clients' success. We've witnessed firsthand how the right technology solutions can transform businesses, create opportunities, and drive economic growth.</p>
+                    
+                    <div class="story-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h4>Innovation First</h4>
+                                <p>We stay ahead of technology trends to deliver cutting-edge solutions</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Client-Centric</h4>
+                                <p>Your success is our success - we're partners in your digital journey</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-trophy"></i>
+                            <div>
+                                <h4>Excellence Driven</h4>
+                                <p>We maintain the highest standards in everything we deliver</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-visual">
+                    <div class="visual-card">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">2021</div>
+                                <div class="timeline-event">Founded in Nairobi</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2022</div>
+                                <div class="timeline-event">First 10 clients served</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2023</div>
+                                <div class="timeline-event">Expanded services</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <div class="timeline-event">50+ projects delivered</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading technology partner for businesses across East Africa, empowering them with innovative digital solutions that drive sustainable growth and competitive advantage.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>We democratize access to premium technology solutions by providing comprehensive, affordable, and scalable digital services that transform how businesses operate and engage with their customers.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>Integrity, innovation, excellence, and client success form the cornerstone of everything we do. We believe in building lasting partnerships based on trust and mutual growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Team</h2>
+                <p>The talented individuals behind BriTech Prime's success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Brian Wanderi</h4>
+                    <p class="member-role">Founder & CEO</p>
+                    <p class="member-bio">Visionary leader with 5+ years in tech innovation and business development. Passionate about transforming businesses through technology.</p>
+                    <div class="member-social">
+                        <a href="https://www.linkedin.com/in/brian-wanderi-githua-9aa738384/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/wandesh275"><i class="fab fa-twitter"></i></a>
+                        <a href="https://github.com/ndesh275"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Sarah Wanjiku</h4>
+                    <p class="member-role">Lead Developer</p>
+                    <p class="member-bio">Full-stack developer specializing in modern web technologies. Expertise in React, Node.js, and cloud architectures.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-stackoverflow"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h4>Michael Ochieng</h4>
+                    <p class="member-role">UI/UX Designer</p>
+                    <p class="member-bio">Creative designer focused on user-centered design and digital experiences that delight and convert users.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Grace Mutindi</h4>
+                    <p class="member-role">Digital Marketing Strategist</p>
+                    <p class="member-bio">Data-driven marketing professional helping businesses grow their online presence and achieve measurable results.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-content">
+                <div class="why-text">
+                    <h2>Why Choose BriTech Prime?</h2>
+                    <div class="why-grid">
+                        <div class="why-item">
+                            <div class="why-number">01</div>
+                            <div class="why-details">
+                                <h4>Local Expertise, Global Standards</h4>
+                                <p>We understand the East African market while delivering solutions that meet international quality standards.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-number">02</div>
+                            <div class="why-details">
+                                <h4>End-to-End Solutions</h4>
+                                <p>From strategy to implementation and ongoing support, we're your complete digital transformation partner.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-number">03</div>
+                            <div class="why-details">
+                                <h4>Agile & Responsive</h4>
+                                <p>Our agile approach ensures rapid delivery without compromising on quality or attention to detail.</p>
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-number">04</div>
+                            <div class="why-details">
+                                <h4>Continuous Innovation</h4>
+                                <p>We stay at the forefront of technology trends to ensure our clients always have a competitive edge.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-visual">
+                    <div class="floating-elements">
+                        <div class="element element-1"><i class="fas fa-rocket"></i></div>
+                        <div class="element element-2"><i class="fas fa-lightbulb"></i></div>
+                        <div class="element element-3"><i class="fas fa-cogs"></i></div>
+                        <div class="element element-4"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Digital Journey?</h2>
+                <p>Join the growing number of businesses that trust BriTech Prime for their digital transformation needs.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary">Get Started Today</a>
+                    <a href="#" class="btn-secondary" onclick="openConsultationForm()">Schedule a Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BriTech Prime</h3>
+                    <p>Transforming Ideas Into Digital Solutions</p>
+                    <div class="footer-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nairobi, Kenya</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <a href="services-page.html">Web Development</a>
+                        <a href="services-page.html">App Development</a>
+                        <a href="services-page.html">IT Support</a>
+                        <a href="#" class="btn-secondary" onclick="openConsultationForm()">Consultation</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <a href="about-page.html">About Us</a>
+                        <a href="portfolio-page.html">Portfolio</a>
+                        <a href="contact-page.html">Contact</a>
+                        <a href="#">Client Portal</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/brian-wanderi-githua-9aa738384/">LinkedIn</a>
+                        <a href="https://x.com/wandesh275">Twitter</a>
+                        <a href="https://www.facebook.com/brian.githua.370/about_overview">Facebook</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BriTech Prime. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+     <style>
+       
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        /* Button Styling */
+        .btn-secondary {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-secondary:hover::before {
+            left: 100%;
+        }
+
+        /* Popup Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Popup Form Container */
+        .popup-form {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .popup-overlay.active .popup-form {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            color: #999;
+            cursor: pointer;
+            z-index: 10;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.05);
+        }
+
+        .close-btn:hover {
+            color: #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+            transform: rotate(90deg);
+        }
+
+        /* Header Styling */
+        .popup-header {
+            text-align: center;
+            padding: 40px 30px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px 20px 0 0;
+            color: white;
+            position: relative;
+        }
+
+        .popup-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 4px solid rgba(255,255,255,0.3);
+            animation: logoFloat 3s ease-in-out infinite;
+            object-fit: cover;
+            background: #4c63d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .popup-header h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .popup-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Form Styling */
+        .consultation-form {
+            padding: 30px;
+        }
+
+        .consultation-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .consultation-form input,
+        .consultation-form select,
+        .consultation-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+            font-family: inherit;
+        }
+
+        .consultation-form input:focus,
+        .consultation-form select:focus,
+        .consultation-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Textarea specific styling */
+        .consultation-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* File input styling */
+        .consultation-form input[type="file"] {
+            padding: 10px;
+            background: white;
+            border: 2px dashed #ddd;
+            cursor: pointer;
+        }
+
+        .consultation-form input[type="file"]:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Other service field animation */
+        #otherServiceField {
+            overflow: hidden;
+            max-height: 0;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        #otherServiceField.show {
+            max-height: 100px;
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .popup-form {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .popup-header {
+                padding: 30px 20px 25px;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .consultation-form {
+                padding: 20px;
+            }
+            
+            .popup-logo {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
+            
+            .popup-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Custom scrollbar for popup */
+        .popup-form::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .popup-form::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .popup-form::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .popup-form::-webkit-scrollbar-thumb:hover {
+            background: #5a67d8;
+        }
+
+        /* Loading animation for submit button */
+        .submit-btn.loading {
+            pointer-events: none;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+
+    <!-- Popup Form -->
+    <div id="consultationPopup" class="popup-overlay">
+        <div class="popup-form">
+            <!-- Close Button -->
+            <span class="close-btn" onclick="closeConsultationForm()">&times;</span>
+            
+            <!-- Logo + Title -->
+            <div class="popup-header">
+                <div class="popup-logo">BT</div>
+                <h2>BriTech Prime</h2>
+                <p class="popup-subtitle">Book your free consultation</p>
+            </div>
+            
+            <form class="consultation-form" onsubmit="handleSubmit(event)">
+                <!-- Client Info -->
+                <label>Full Name*</label>
+                <input type="text" name="name" required>
+                
+                <label>Email Address*</label>
+                <input type="email" name="email" required>
+                
+                <label>Phone Number</label>
+                <input type="tel" name="phone">
+                
+                <!-- Consultation Details -->
+                <label>Preferred Date*</label>
+                <input type="date" name="date" required>
+                
+                <label>Preferred Time*</label>
+                <input type="time" name="time" required>
+                
+                <label>Consultation Type*</label>
+                <select name="service" id="service" required onchange="toggleOtherService(this)">
+                    <option value="">Select a service</option>
+                    <option>Web Design</option>
+                    <option>App Development</option>
+                    <option>UI/UX Review</option>
+                    <option>Tech Consultation</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+                <!-- Hidden field shown only if "Other" selected -->
+                <div id="otherServiceField">
+                    <label>Please describe your service</label>
+                    <input type="text" name="other_service">
+                </div>
+                
+                <!-- Extra Info -->
+                <label>Project Description</label>
+                <textarea name="message" rows="4" placeholder="Tell us about your project..."></textarea>
+                
+                <label>Budget Range</label>
+                <select name="budget">
+                    <option value="">Select budget range</option>
+                    <option value="under-50k">Under KSh 50,000</option>
+                    <option value="50k-150k">KSh 50,000 - 150,000</option>
+                    <option value="150k-500k">KSh 150,000 - 500,000</option>
+                    <option value="500k-1m">KSh 500,000 - 1,000,000</option>
+                    <option value="over-1m">Over KSh 1,000,000</option>
+                </select>
+                
+                <label>Location Preference</label>
+                <select name="location">
+                    <option>Online</option>
+                    <option>Phone Call</option>
+                    <option>In-Person</option>
+                </select>
+                
+                <!-- File Upload -->
+                <label>Attach File (optional)</label>
+                <input type="file" name="file">
+                
+                <!-- Submit -->
+                <button type="submit" class="submit-btn" id="submitBtn">Submit Consultation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Open consultation form
+        function openConsultationForm() {
+            console.log('Opening popup...');
+            const popup = document.getElementById('consultationPopup');
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Set minimum date to today
+            const dateInput = document.querySelector('input[name="date"]');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        }
+
+        // Close consultation form
+        function closeConsultationForm() {
+            console.log('Closing popup...');
+            const popup = document.getElementById('consultationPopup');
+            popup.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle other service field
+        function toggleOtherService(select) {
+            const otherField = document.getElementById('otherServiceField');
+            if (select.value === 'Other') {
+                otherField.style.display = 'block';
+                otherField.classList.add('show');
+                setTimeout(() => {
+                    otherField.style.maxHeight = '100px';
+                }, 10);
+            } else {
+                otherField.style.maxHeight = '0';
+                otherField.classList.remove('show');
+                setTimeout(() => {
+                    otherField.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Add loading state
+            submitBtn.classList.add('loading');
+            submitBtn.innerHTML = 'Submitting...';
+            
+            // Simulate form submission (replace with actual form handling)
+            setTimeout(() => {
+                alert('Thank you! Your consultation request has been submitted. We\'ll get back to you within 24 hours.');
+                closeConsultationForm();
+                
+                // Reset form
+                document.querySelector('.consultation-form').reset();
+                
+                // Reset button
+                submitBtn.classList.remove('loading');
+                submitBtn.innerHTML = 'Submit Consultation';
+                
+                // Hide other service field if visible
+                const otherField = document.getElementById('otherServiceField');
+                otherField.style.display = 'none';
+                otherField.style.maxHeight = '0';
+            }, 2000);
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('consultationPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConsultationForm();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeConsultationForm();
+            }
+        });
+    </script>
+</body>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand h2 {
+    color: #4c63d2;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link.active {
+    color: #4c63d2;
+}
+
+.nav-link:hover {
+    color: #4c63d2;
+}
+
+.nav-portal {
+    color: #4c63d2;
+    border: 2px solid #4c63d2;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-portal:hover {
+    background: #4c63d2;
+    color: white;
+}
+
+.get-quote-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.get-quote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 150px 0 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.hero-visual {
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+.stat-card:nth-child(2) { animation-delay: 0.5s; }
+.stat-card:nth-child(3) { animation-delay: 1s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #50E3C2;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+/* Story Section */
+.story-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.story-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.story-text p {
+    font-size: 1.125rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.story-highlights {
+    margin-top: 2rem;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.highlight-item i {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.highlight-item h4 {
+    margin-bottom: 0.25rem;
+    color: #333;
+}
+
+.highlight-item p {
+    color: #666;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.story-visual {
+    position: relative;
+}
+
+.visual-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+}
+
+.timeline-item {
+    position: relative;
+    padding: 1rem 0 1rem 3rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 1.5rem;
+    width: 16px;
+    height: 16px;
+    background: #4c63d2;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px #f8f9fa;
+}
+
+.timeline-year {
+    font-weight: 700;
+    color: #4c63d2;
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-event {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+/* Mission Section */
+.mission-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.mission-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.mission-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mission-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.mission-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.mission-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Team Section */
+.team-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.125rem;
+    color: #666;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.member-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.team-member h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.member-role {
+    color: #4c63d2;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.member-bio {
+    color: #666;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.member-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.member-social a {
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.member-social a:hover {
+    background: #4c63d2;
+    color: white;
+}
+
+/* Why Section */
+.why-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.why-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.why-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.why-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.why-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.why-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.why-details h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.why-details p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.why-visual {
+    position: relative;
+    height: 400px;
+}
+
+.floating-elements {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.element {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    animation: floatRandom 4s ease-in-out infinite;
+}
+
+.element-1 {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.element-2 {
+    top: 60%;
+    left: 60%;
+    animation-delay: 1s;
+}
+
+.element-3 {
+    top: 10%;
+    right: 20%;
+    animation-delay: 2s;
+}
+
+.element-4 {
+    bottom: 20%;
+    left: 40%;
+    animation-delay: 3s;
+}
+
+@keyframes floatRandom {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(5deg); }
+    50% { transform: translateY(10px) rotate(-5deg); }
+    75% { transform: translateY(-5px) rotate(3deg); }
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    text-align: center;
+    color: white;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: white;
+    color: #4c63d2;
+    border: 2px solid white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #4c63d2;
+}
+
+/* Footer */
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand h3 {
+    color: #4c63d2;
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.footer-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ccc;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.link-group h4 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.link-group a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.link-group a:hover {
+    color: #4c63d2;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    text-align: center;
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-visual {
+        display: none;
+    }
+
+    .story-content,
+    .why-content {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+
+    .why-visual {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .section-header h2,
+    .story-text h2,
+    .why-text h2 {
+        font-size: 2rem;
+    }
+
+    .why-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+
+
+<script>
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add scroll effect to navbar
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+    } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    }
+});
+
+
+<!-- Email JS Below -->
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script src="emailJS.js"></script>

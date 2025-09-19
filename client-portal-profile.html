@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BriTech Client Portal - Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, onAuthStateChanged, updatePassword, reauthenticateWithCredential, EmailAuthProvider, updateProfile } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getFirestore, doc, getDoc, updateDoc, setDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js';
+
+        // Initialize Firebase (Replace with your config)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAeN54kvNiDlsK3dSQRewnX7NuwOWQxiE",
+            authDomain: "britech-web.firebaseapp.com",
+            projectId: "britech-web",
+            storageBucket: "britech-web.firebasestorage.app",
+            messagingSenderId: "99699196886",
+            appId: "1:99699196886:web:60c41c5de1a0d4fdff5a77",
+            measurementId: "G-PLY3W7WX9M"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+
+        // Make Firebase services globally available
+        window.auth = auth;
+        window.db = db;
+        window.storage = storage;
+        window.onAuthStateChanged = onAuthStateChanged;
+        window.updatePassword = updatePassword;
+        window.updateProfile = updateProfile;
+        window.reauthenticateWithCredential = reauthenticateWithCredential;
+        window.EmailAuthProvider = EmailAuthProvider;
+        window.doc = doc;
+        window.getDoc = getDoc;
+        window.updateDoc = updateDoc;
+        window.setDoc = setDoc;
+        window.serverTimestamp = serverTimestamp;
+        window.ref = ref;
+        window.uploadBytes = uploadBytes;
+        window.getDownloadURL = getDownloadURL;
+        window.deleteObject = deleteObject;
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            padding: 32px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .profile-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-content {
+            padding: 32px;
+        }
+
+        /* Connection Status Indicator */
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ef4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            z-index: 1000;
+            display: none;
+        }
+
+        .connection-status.offline {
+            background: #ef4444;
+            display: block;
+        }
+
+        .connection-status.online {
+            background: #10b981;
+            display: block;
+        }
+
+        /* Profile Picture Section */
+        .profile-picture-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .profile-picture-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .profile-picture.uploading {
+            opacity: 0.6;
+        }
+
+        .edit-picture-btn {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 35px;
+            height: 35px;
+            background: #3b82f6;
+            border: 3px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            color: white;
+        }
+
+        .edit-picture-btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.1);
+        }
+
+        .edit-picture-btn.uploading {
+            background: #6b7280;
+            cursor: not-allowed;
+        }
+
+        #profilePictureInput {
+            display: none;
+        }
+
+        /* Loading States */
+        .loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Form Sections */
+        .form-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: #3b82f6;
+            font-size: 1.1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #374151;
+            font-size: 0.875rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            background: white;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group.readonly input {
+            background: #f9fafb;
+            color: #6b7280;
+            cursor: not-allowed;
+        }
+
+        .form-group.readonly input:focus {
+            border-color: #e5e7eb;
+            box-shadow: none;
+        }
+
+        /* Save Changes Button */
+        .save-changes-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: none;
+        }
+
+        .save-changes-btn.visible {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: slideUp 0.3s ease;
+        }
+
+        .save-changes-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+        }
+
+        .save-changes-btn:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 5px 15px rgba(107, 114, 128, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Client ID Badge */
+        .client-id-display {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        /* Password Section */
+        .password-section {
+            background: white;
+            border: 2px solid #e2e8f0;
+        }
+
+        .password-toggle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .password-form {
+            display: none;
+        }
+
+        .password-form.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .password-steps {
+            display: grid;
+            gap: 20px;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        /* Password Strength Indicator */
+        .password-strength {
+            margin-top: 8px;
+        }
+
+        .strength-bar {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+        }
+
+        .strength-text {
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Notification Settings */
+        .notification-settings {
+            display: grid;
+            gap: 16px;
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+
+        .notification-label {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification-label strong {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .notification-label small {
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #3b82f6;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #4b5563;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover:not(:disabled) {
+            background: #059669;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover:not(:disabled) {
+            background: #dc2626;
+        }
+
+        /* Activity Log */
+        .activity-log {
+            max-height: 300px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+
+        .activity-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-content strong {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        .activity-content small {
+            display: block;
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+
+        /* Popup Notifications */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: 20px;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .popup-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .popup-icon.success {
+            color: #10b981;
+        }
+
+        .popup-icon.error {
+            color: #ef4444;
+        }
+
+        .popup-icon.warning {
+            color: #f59e0b;
+        }
+
+        .popup h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .popup p {
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .close-profile-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .close-profile-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .profile-card {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .profile-card.fade-out {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .profile-content {
+                padding: 20px;
+            }
+            
+            .form-section {
+                padding: 16px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .notification-item {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .save-changes-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 14px 20px;
+            }
+        }
+
+        /* Input validation styles */
+        .form-group.error input, .form-group.error select, .form-group.error textarea {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .form-group.success input, .form-group.success select, .form-group.success textarea {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Connection Status Indicator -->
+    <div class="connection-status" id="connectionStatus">
+        <i class="fas fa-wifi"></i> <span id="statusText">Checking connection...</span>
+    </div>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <h1><i class="fas fa-user-circle"></i> My Profile</h1>
+                <p>Manage your BriTech account information</p>
+                <button class="close-profile-btn" onclick="closeProfile()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="profile-content">
+                <!-- Profile Picture -->
+                <div class="profile-picture-section">
+                    <div class="profile-picture-wrapper">
+                        <img id="profilePicture" src="https://via.placeholder.com/100x100/e2e8f0/9ca3af?text=👤" alt="Profile Picture" class="profile-picture">
+                        <div class="edit-picture-btn" id="editPictureBtn" onclick="document.getElementById('profilePictureInput').click()">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <input type="file" id="profilePictureInput" accept="image/*" onchange="uploadProfilePicture(this)">
+                    </div>
+                </div>
+
+                <!-- Client ID Display -->
+                <div class="client-id-display">
+                    <i class="fas fa-id-badge"></i>
+                    <span>Client ID: <span id="clientIdDisplay">Loading...</span></span>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i> Personal Information
+                    </h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" oninput="markAsChanged()" required>
+                            <div class="error-message">Full name is required</div>
+                        </div>
+
+                        <div class="form-group readonly">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number" oninput="markAsChanged()">
+                            <div class="error-message">Please enter a valid phone number</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" id="companyName" placeholder="Enter your company name" oninput="markAsChanged()">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title</label>
+                            <input type="text" id="jobTitle" placeholder="Enter your job title" oninput="markAsChanged()">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <input type="text" id="department" placeholder="Enter your department" oninput="markAsChanged()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Information -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-building"></i> Business Information
+                    </h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="companySize">Company Size</label>
+                            <select id="companySize" onchange="markAsChanged()">
+                                <option value="">Select company size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-1000">201-1000 employees</option>
+                                <option value="1000+">1000+ employees</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="industry">Industry</label>
+                            <select id="industry" onchange="markAsChanged()">
+                                <option value="">Select industry</option>
+                                <option value="technology">Technology</option>
+                                <option value="finance">Finance</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="retail">Retail</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="consulting">Consulting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="website">Company Website</label>
+                            <input type="url" id="website" placeholder="https://example.com" oninput="markAsChanged()">
+                            <div class="error-message">Please enter a valid URL</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Business Address</label>
+                            <textarea id="address" placeholder="Enter your business address" oninput="markAsChanged()"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Information -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-cog"></i> Account Information
+                    </h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group readonly">
+                            <label for="clientId">Client ID</label>
+                            <input type="text" id="clientId" readonly>
+                        </div>
+
+                        <div class="form-group readonly">
+                            <label for="username">Username (Email)</label>
+                            <input type="text" id="username" readonly>
+                        </div>
+
+                        <div class="form-group readonly">
+                            <label for="accountCreated">Account Created</label>
+                            <input type="text" id="accountCreated" readonly>
+                        </div>
+
+                        <div class="form-group readonly">
+                            <label for="lastLogin">Last Login</label>
+                            <input type="text" id="lastLogin" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-bell"></i> Notification Preferences
+                    </h2>
+                    
+                    <div class="notification-settings">
+                        <div class="notification-item">
+                            <div class="notification-label">
+                                <strong>Email Notifications</strong>
+                                <small>Receive updates via email</small>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="emailNotifications" onchange="updateNotificationSetting('emailNotifications', this.checked)">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-label">
+                                <strong>Project Updates</strong>
+                                <small>Get notified about project changes</small>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="projectUpdates" onchange="updateNotificationSetting('projectUpdates', this.checked)">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-label">
+                                <strong>Marketing Communications</strong>
+                                <small>Receive promotional emails</small>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="marketingEmails" onchange="updateNotificationSetting('marketingEmails', this.checked)">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-label">
+                                <strong>Security Alerts</strong>
+                                <small>Important security notifications</small>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="securityAlerts" checked disabled>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Management -->
+                <div class="form-section password-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-lock"></i> Security
+                    </h2>
+                    
+                    <div class="password-toggle">
+                        <button type="button" class="btn btn-outline" onclick="togglePasswordForm()">
+                            <i class="fas fa-key"></i> Change Password
+                        </button>
+                    </div>
+
+                    <div class="password-form" id="passwordForm">
+                        <div class="password-steps">
+                            <!-- Step 1: Current Password -->
+                            <div class="step active" id="step1">
+                                <div class="form-group">
+                                    <label for="currentPassword">Enter Current Password *</label>
+                                    <input type="password" id="currentPassword" placeholder="Current password">
+                                    <div class="error-message">Current password is required</div>
+                                </div>
+                                <button type="button" class="btn btn-primary" onclick="verifyCurrentPassword()">
+                                    <i class="fas fa-check"></i> Verify Password
+                                </button>
+                            </div>
+
+                            <!-- Step 2: New Password -->
+                            <div class="step" id="step2">
+                                <div class="form-group">
+                                    <label for="newPassword">New Password *</label>
+                                    <input type="password" id="newPassword" placeholder="Enter new password" oninput="checkPasswordStrength(this.value)">
+                                    <div class="password-strength">
+                                        <div class="strength-bar">
+                                            <div class="strength-fill" id="strengthFill"></div>
+                                        </div>
+                                        <div class="strength-text" id="strengthText">Enter a password</div>
+                                    </div>
+                                    <div class="error-message">Password must be at least 8 characters long</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm New Password *</label>
+                                    <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                                    <div class="error-message">Passwords do not match</div>
+                                </div>
+                                <div style="display: flex; gap: 10px; margin-top: 16px;">
+                                    <button type="button" class="btn btn-secondary" onclick="resetPasswordForm()">
+                                        <i class="fas fa-arrow-left"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-success" onclick="changePassword()">
+                                        <i class="fas fa-save"></i> Change Password
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-history"></i> Recent Activity
+                    </h2>
+                    
+                    <div class="activity-log" id="activityLog">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Logged in</strong>
+                                <small>Today at 2:30 PM</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Profile updated</strong>
+                                <small>Yesterday at 4:15 PM</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-file"></i>
+                            </div>
+                            <div class="activity-content">
+                                <strong>Document uploaded</strong>
+                                <small>2 days ago at 11:20 AM</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Management -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-database"></i> Data Management
+                    </h2>
+                    
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button type="button" class="btn btn-outline" onclick="exportUserData()">
+                            <i class="fas fa-download"></i> Export My Data
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="clearCache()">
+                            <i class="fas fa-trash-alt"></i> Clear Cache
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="confirmDeleteAccount()">
+                            <i class="fas fa-user-times"></i> Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Changes Button -->
+    <button class="save-changes-btn" id="saveChangesBtn" onclick="saveAllChanges()">
+        <i class="fas fa-save"></i> Save Changes
+    </button>
+
+    <!-- Popup Notification -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <div class="popup-icon" id="popupIcon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 id="popupTitle">Success!</h3>
+            <p id="popupMessage">Operation completed successfully.</p>
+            <button class="btn btn-primary" onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div class="popup-overlay" id="confirmDialog">
+        <div class="popup">
+            <div class="popup-icon warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3 id="confirmTitle">Confirm Action</h3>
+            <p id="confirmMessage">Are you sure you want to proceed?</p>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button class="btn btn-secondary" onclick="closeConfirmDialog()">Cancel</button>
+                <button class="btn btn-danger" id="confirmButton" onclick="executeConfirmedAction()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let userProfile = {};
+        let pendingAction = null;
+        let isLoading = false;
+        let hasUnsavedChanges = false;
+        let connectionStatus = 'checking';
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkConnectionStatus();
+            setTimeout(() => {
+                initializeProfile();
+            }, 1000);
+        });
+
+        // Connection status checking
+        function checkConnectionStatus() {
+            const statusIndicator = document.getElementById('connectionStatus');
+            const statusText = document.getElementById('statusText');
+            
+            if (navigator.onLine) {
+                // Test Firebase connection
+                if (window.auth) {
+                    connectionStatus = 'online';
+                    statusIndicator.className = 'connection-status online';
+                    statusText.textContent = 'Connected';
+                    setTimeout(() => {
+                        statusIndicator.style.display = 'none';
+                    }, 3000);
+                } else {
+                    connectionStatus = 'offline';
+                    statusIndicator.className = 'connection-status offline';
+                    statusText.textContent = 'Firebase not loaded';
+                }
+            } else {
+                connectionStatus = 'offline';
+                statusIndicator.className = 'connection-status offline';
+                statusText.textContent = 'No internet connection';
+            }
+        }
+
+        // Monitor online/offline status
+        window.addEventListener('online', () => {
+            checkConnectionStatus();
+        });
+
+        window.addEventListener('offline', () => {
+            connectionStatus = 'offline';
+            const statusIndicator = document.getElementById('connectionStatus');
+            const statusText = document.getElementById('statusText');
+            statusIndicator.className = 'connection-status offline';
+            statusText.textContent = 'Connection lost';
+            statusIndicator.style.display = 'block';
+        });
+
+        function initializeProfile() {
+            if (window.onAuthStateChanged && window.auth) {
+                window.onAuthStateChanged(window.auth, (user) => {
+                    if (user) {
+                        currentUser = user;
+                        loadUserProfile();
+                        updateLastLogin();
+                    } else {
+                        showPopup('Authentication Required', 'Please log in to view your profile', 'error');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 2000);
+                    }
+                });
+            } else {
+                setTimeout(initializeProfile, 500);
+            }
+        }
+
+        async function loadUserProfile() {
+            try {
+                setLoadingState(true);
+                
+                if (connectionStatus === 'offline') {
+                    throw new Error('No internet connection. Please check your connection and try again.');
+                }
+                
+                const userDoc = await window.getDoc(window.doc(window.db, 'users', currentUser.uid));
+                
+                if (userDoc.exists()) {
+                    userProfile = userDoc.data();
+                } else {
+                    userProfile = {
+                        email: currentUser.email,
+                        fullName: currentUser.displayName || '',
+                        companyName: '',
+                        phone: '',
+                        jobTitle: '',
+                        department: '',
+                        companySize: '',
+                        industry: '',
+                        website: '',
+                        address: '',
+                        clientId: await generateClientId(),
+                        createdAt: new Date().toISOString(),
+                        notifications: {
+                            emailNotifications: true,
+                            projectUpdates: true,
+                            marketingEmails: false,
+                            securityAlerts: true
+                        }
+                    };
+                    await window.setDoc(window.doc(window.db, 'users', currentUser.uid), userProfile);
+                    logActivity('Account created', 'account');
+                }
+
+                populateProfileFields();
+                loadActivityLog();
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                showPopup('Connection Error', error.message || 'Failed to load client info. Please check your internet connection.', 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        }
+
+        async function generateClientId() {
+            try {
+                const counterDoc = await window.getDoc(window.doc(window.db, 'counters', 'clientId'));
+                let nextId = 1000;
+
+                if (counterDoc.exists()) {
+                    nextId = counterDoc.data().current + 1;
+                }
+
+                await window.setDoc(window.doc(window.db, 'counters', 'clientId'), { current: nextId });
+                return `BRI${nextId}`;
+            } catch (error) {
+                console.error('Error generating client ID:', error);
+                return `BRI${Date.now()}`;
+            }
+        }
+
+        function populateProfileFields() {
+            // Basic information
+            document.getElementById('fullName').value = userProfile.fullName || '';
+            document.getElementById('email').value = userProfile.email || currentUser.email;
+            document.getElementById('phone').value = userProfile.phone || '';
+            document.getElementById('companyName').value = userProfile.companyName || '';
+            document.getElementById('jobTitle').value = userProfile.jobTitle || '';
+            document.getElementById('department').value = userProfile.department || '';
+            
+            // Business information
+            document.getElementById('companySize').value = userProfile.companySize || '';
+            document.getElementById('industry').value = userProfile.industry || '';
+            document.getElementById('website').value = userProfile.website || '';
+            document.getElementById('address').value = userProfile.address || '';
+            
+            // Account information
+            document.getElementById('clientId').value = userProfile.clientId || '';
+            document.getElementById('username').value = currentUser.email;
+            document.getElementById('clientIdDisplay').textContent = userProfile.clientId || '';
+            
+            // Dates
+            if (userProfile.createdAt) {
+                document.getElementById('accountCreated').value = new Date(userProfile.createdAt).toLocaleDateString();
+            }
+            if (userProfile.lastLogin) {
+                document.getElementById('lastLogin').value = new Date(userProfile.lastLogin).toLocaleString();
+            }
+
+            // Notification settings
+            const notifications = userProfile.notifications || {};
+            document.getElementById('emailNotifications').checked = notifications.emailNotifications !== false;
+            document.getElementById('projectUpdates').checked = notifications.projectUpdates !== false;
+            document.getElementById('marketingEmails').checked = notifications.marketingEmails === true;
+
+            // Load profile picture with better error handling
+            if (userProfile.profilePicture) {
+                const img = document.getElementById('profilePicture');
+                img.onload = function() {
+                    console.log('Profile picture loaded successfully');
+                };
+                img.onerror = function() {
+                    console.error('Failed to load profile picture');
+                    img.src = "https://via.placeholder.com/100x100/e2e8f0/9ca3af?text=👤";
+                };
+                img.src = userProfile.profilePicture;
+            }
+
+            hasUnsavedChanges = false;
+            updateSaveButton();
+        }
+
+        function markAsChanged() {
+            hasUnsavedChanges = true;
+            updateSaveButton();
+        }
+
+        function updateSaveButton() {
+            const saveBtn = document.getElementById('saveChangesBtn');
+            if (hasUnsavedChanges) {
+                saveBtn.classList.add('visible');
+            } else {
+                saveBtn.classList.remove('visible');
+            }
+        }
+
+        async function saveAllChanges() {
+            if (!currentUser || isLoading || !hasUnsavedChanges) return;
+
+            if (connectionStatus === 'offline') {
+                showPopup('Connection Error', 'Cannot save changes while offline', 'error');
+                return;
+            }
+
+            try {
+                setLoadingState(true);
+                
+                // Collect all form data
+                const updatedProfile = {
+                    fullName: document.getElementById('fullName').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    companyName: document.getElementById('companyName').value.trim(),
+                    jobTitle: document.getElementById('jobTitle').value.trim(),
+                    department: document.getElementById('department').value.trim(),
+                    companySize: document.getElementById('companySize').value,
+                    industry: document.getElementById('industry').value,
+                    website: document.getElementById('website').value.trim(),
+                    address: document.getElementById('address').value.trim(),
+                    updatedAt: window.serverTimestamp()
+                };
+
+                // Validate required fields
+                if (!updatedProfile.fullName) {
+                    const formGroup = document.getElementById('fullName').parentNode;
+                    formGroup.classList.add('error');
+                    showPopup('Validation Error', 'Full name is required', 'error');
+                    return;
+                }
+
+                // Validate phone if provided
+                if (updatedProfile.phone && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(updatedProfile.phone.replace(/\s/g, ''))) {
+                    const formGroup = document.getElementById('phone').parentNode;
+                    formGroup.classList.add('error');
+                    showPopup('Validation Error', 'Please enter a valid phone number', 'error');
+                    return;
+                }
+
+                // Validate website if provided
+                if (updatedProfile.website && !/^https?:\/\/.+\..+/.test(updatedProfile.website)) {
+                    const formGroup = document.getElementById('website').parentNode;
+                    formGroup.classList.add('error');
+                    showPopup('Validation Error', 'Please enter a valid website URL', 'error');
+                    return;
+                }
+
+                // Update Firestore
+                await window.updateDoc(window.doc(window.db, 'users', currentUser.uid), updatedProfile);
+                
+                // Update Firebase Auth display name if changed
+                if (updatedProfile.fullName !== userProfile.fullName && updatedProfile.fullName) {
+                    await window.updateProfile(currentUser, { displayName: updatedProfile.fullName });
+                }
+                
+                // Update local profile
+                Object.assign(userProfile, updatedProfile);
+                
+                hasUnsavedChanges = false;
+                updateSaveButton();
+                
+                showPopup('Success!', 'Profile updated successfully', 'success');
+                logActivity('Profile updated', 'edit');
+                
+            } catch (error) {
+                console.error('Error saving profile:', error);
+                showPopup('Error', 'Failed to save changes: ' + error.message, 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        }
+
+        async function updateNotificationSetting(setting, value) {
+            try {
+                if (!userProfile.notifications) {
+                    userProfile.notifications = {};
+                }
+                
+                userProfile.notifications[setting] = value;
+                
+                await window.updateDoc(window.doc(window.db, 'users', currentUser.uid), {
+                    notifications: userProfile.notifications,
+                    updatedAt: window.serverTimestamp()
+                });
+                
+                logActivity('Updated notification settings', 'settings');
+            } catch (error) {
+                console.error('Error updating notification setting:', error);
+                showPopup('Error', 'Failed to update notification setting', 'error');
+            }
+        }
+
+        async function uploadProfilePicture(input) {
+            if (!input.files[0] || !currentUser) return;
+
+            const file = input.files[0];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+
+            if (file.size > maxSize) {
+                showPopup('Error', 'File size must be less than 5MB', 'error');
+                return;
+            }
+
+            if (!file.type.startsWith('image/')) {
+                showPopup('Error', 'Please select a valid image file', 'error');
+                return;
+            }
+
+            if (connectionStatus === 'offline') {
+                showPopup('Connection Error', 'Cannot upload image while offline', 'error');
+                return;
+            }
+
+            try {
+                // Show uploading state
+                const profilePic = document.getElementById('profilePicture');
+                const editBtn = document.getElementById('editPictureBtn');
+                profilePic.classList.add('uploading');
+                editBtn.classList.add('uploading');
+                editBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                
+                setLoadingState(true);
+                
+                // Delete old profile picture if exists
+                if (userProfile.profilePicture && userProfile.profilePicture.includes('firebasestorage')) {
+                    try {
+                        const oldRef = window.ref(window.storage, userProfile.profilePicture);
+                        await window.deleteObject(oldRef);
+                    } catch (deleteError) {
+                        console.warn('Could not delete old profile picture:', deleteError);
+                    }
+                }
+
+                const storageRef = window.ref(window.storage, `profile-pictures/${currentUser.uid}/${Date.now()}-${file.name}`);
+                const snapshot = await window.uploadBytes(storageRef, file);
+                const downloadURL = await window.getDownloadURL(snapshot.ref);
+
+                await window.updateDoc(window.doc(window.db, 'users', currentUser.uid), { 
+                    profilePicture: downloadURL,
+                    updatedAt: window.serverTimestamp()
+                });
+                
+                // Update Firebase Auth profile
+                await window.updateProfile(currentUser, { photoURL: downloadURL });
+                
+                // Update UI immediately
+                profilePic.onload = function() {
+                    profilePic.classList.remove('uploading');
+                    editBtn.classList.remove('uploading');
+                    editBtn.innerHTML = '<i class="fas fa-edit"></i>';
+                    showPopup('Success!', 'Profile picture updated successfully', 'success');
+                };
+                profilePic.onerror = function() {
+                    console.error('Failed to load new profile picture');
+                    profilePic.src = "https://via.placeholder.com/100x100/e2e8f0/9ca3af?text=👤";
+                    profilePic.classList.remove('uploading');
+                    editBtn.classList.remove('uploading');
+                    editBtn.innerHTML = '<i class="fas fa-edit"></i>';
+                };
+                profilePic.src = downloadURL;
+                userProfile.profilePicture = downloadURL;
+
+                logActivity('Updated profile picture', 'edit');
+            } catch (error) {
+                console.error('Error uploading profile picture:', error);
+                showPopup('Error', 'Failed to upload profile picture: ' + error.message, 'error');
+                
+                // Reset UI state
+                const profilePic = document.getElementById('profilePicture');
+                const editBtn = document.getElementById('editPictureBtn');
+                profilePic.classList.remove('uploading');
+                editBtn.classList.remove('uploading');
+                editBtn.innerHTML = '<i class="fas fa-edit"></i>';
+            } finally {
+                setLoadingState(false);
+            }
+        }
+
+        function togglePasswordForm() {
+            const passwordForm = document.getElementById('passwordForm');
+            passwordForm.classList.toggle('active');
+            
+            if (!passwordForm.classList.contains('active')) {
+                resetPasswordForm();
+            }
+        }
+
+        async function verifyCurrentPassword() {
+            const currentPassword = document.getElementById('currentPassword').value;
+            const formGroup = document.getElementById('currentPassword').parentNode;
+
+            formGroup.classList.remove('error');
+
+            if (!currentPassword) {
+                formGroup.classList.add('error');
+                return;
+            }
+
+            if (connectionStatus === 'offline') {
+                showPopup('Connection Error', 'Cannot verify password while offline', 'error');
+                return;
+            }
+
+            try {
+                setLoadingState(true);
+                const credential = window.EmailAuthProvider.credential(currentUser.email, currentPassword);
+                await window.reauthenticateWithCredential(currentUser, credential);
+
+                // Move to step 2
+                document.getElementById('step1').classList.remove('active');
+                document.getElementById('step2').classList.add('active');
+                formGroup.classList.add('success');
+            } catch (error) {
+                console.error('Error verifying password:', error);
+                formGroup.classList.add('error');
+                showPopup('Error', 'Current password is incorrect', 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        }
+
+        function checkPasswordStrength(password) {
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
+            
+            if (!password) {
+                strengthFill.style.width = '0%';
+                strengthText.textContent = 'Enter a password';
+                strengthText.style.color = '#6b7280';
+                return;
+            }
+            
+            let strength = 0;
+            let feedback = '';
+            
+            // Length check
+            if (password.length >= 8) strength += 20;
+            if (password.length >= 12) strength += 10;
+            
+            // Character variety checks
+            if (/[a-z]/.test(password)) strength += 15;
+            if (/[A-Z]/.test(password)) strength += 15;
+            if (/[0-9]/.test(password)) strength += 15;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 25;
+            
+            if (strength < 30) {
+                strengthFill.style.backgroundColor = '#ef4444';
+                feedback = 'Weak';
+            } else if (strength < 60) {
+                strengthFill.style.backgroundColor = '#f59e0b';
+                feedback = 'Fair';
+            } else if (strength < 80) {
+                strengthFill.style.backgroundColor = '#3b82f6';
+                feedback = 'Good';
+            } else {
+                strengthFill.style.backgroundColor = '#10b981';
+                feedback = 'Strong';
+            }
+            
+            strengthFill.style.width = strength + '%';
+            strengthText.textContent = feedback;
+            strengthText.style.color = strengthFill.style.backgroundColor;
+        }
+
+        async function changePassword() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const newPasswordGroup = document.getElementById('newPassword').parentNode;
+            const confirmPasswordGroup = document.getElementById('confirmPassword').parentNode;
+
+            // Reset validation states
+            newPasswordGroup.classList.remove('error', 'success');
+            confirmPasswordGroup.classList.remove('error', 'success');
+
+            let isValid = true;
+
+            if (!newPassword || newPassword.length < 8) {
+                newPasswordGroup.classList.add('error');
+                isValid = false;
+            }
+
+            if (newPassword !== confirmPassword) {
+                confirmPasswordGroup.classList.add('error');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                showPopup('Error', 'Please check your password entries', 'error');
+                return;
+            }
+
+            if (connectionStatus === 'offline') {
+                showPopup('Connection Error', 'Cannot change password while offline', 'error');
+                return;
+            }
+
+            try {
+                setLoadingState(true);
+                await window.updatePassword(currentUser, newPassword);
+                resetPasswordForm();
+                document.getElementById('passwordForm').classList.remove('active');
+                
+                showPopup('Success!', 'Password changed successfully', 'success');
+                logActivity('Changed password', 'security');
+            } catch (error) {
+                console.error('Error changing password:', error);
+                showPopup('Error', 'Failed to change password: ' + error.message, 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        }
+
+        function resetPasswordForm() {
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('currentPassword').value = '';
+            document.getElementById('newPassword').value = '';
+            document.getElementById('confirmPassword').value = '';
+            
+            // Reset validation states
+            document.querySelectorAll('.password-form .form-group').forEach(group => {
+                group.classList.remove('error', 'success');
+            });
+            
+            // Reset password strength indicator
+            document.getElementById('strengthFill').style.width = '0%';
+            document.getElementById('strengthText').textContent = 'Enter a password';
+        }
+
+        async function updateLastLogin() {
+            try {
+                await window.updateDoc(window.doc(window.db, 'users', currentUser.uid), {
+                    lastLogin: window.serverTimestamp()
+                });
+            } catch (error) {
+                console.warn('Could not update last login:', error);
+            }
+        }
+
+        async function logActivity(description, type) {
+            try {
+                if (!userProfile.activities) {
+                    userProfile.activities = [];
+                }
+                
+                const activity = {
+                    description,
+                    type,
+                    timestamp: new Date().toISOString(),
+                    ip: 'Hidden for privacy'
+                };
+                
+                userProfile.activities.unshift(activity);
+                userProfile.activities = userProfile.activities.slice(0, 50); // Keep only last 50
+                
+                await window.updateDoc(window.doc(window.db, 'users', currentUser.uid), {
+                    activities: userProfile.activities
+                });
+                
+                updateActivityDisplay();
+            } catch (error) {
+                console.warn('Could not log activity:', error);
+            }
+        }
+
+        function loadActivityLog() {
+            const activities = userProfile.activities || [];
+            const activityLog = document.getElementById('activityLog');
+            
+            if (activities.length === 0) {
+                activityLog.innerHTML = `
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="activity-content">
+                            <strong>No recent activity</strong>
+                            <small>Your account activity will appear here</small>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            activityLog.innerHTML = activities.slice(0, 10).map(activity => {
+                const icon = getActivityIcon(activity.type);
+                const timeAgo = getTimeAgo(activity.timestamp);
+                
+                return `
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="${icon}"></i>
+                        </div>
+                        <div class="activity-content">
+                            <strong>${activity.description}</strong>
+                            <small>${timeAgo}</small>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateActivityDisplay() {
+            setTimeout(loadActivityLog, 100);
+        }
+
+        function getActivityIcon(type) {
+            const icons = {
+                'login': 'fas fa-sign-in-alt',
+                'edit': 'fas fa-edit',
+                'security': 'fas fa-shield-alt',
+                'upload': 'fas fa-upload',
+                'settings': 'fas fa-cog',
+                'account': 'fas fa-user-plus',
+                'default': 'fas fa-circle'
+            };
+            return icons[type] || icons['default'];
+        }
+
+        function getTimeAgo(timestamp) {
+            const now = new Date();
+            const time = new Date(timestamp);
+            const diffMs = now - time;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMins / 60);
+            const diffDays = Math.floor(diffHours / 24);
+            
+            if (diffMins < 1) return 'Just now';
+            if (diffMins < 60) return `${diffMins} minutes ago`;
+            if (diffHours < 24) return `${diffHours} hours ago`;
+            if (diffDays < 30) return `${diffDays} days ago`;
+            
+            return time.toLocaleDateString();
+        }
+
+        function exportUserData() {
+            const dataToExport = {
+                profile: userProfile,
+                exportDate: new Date().toISOString(),
+                clientId: userProfile.clientId
+            };
+            
+            const blob = new Blob([JSON.stringify(dataToExport, null, 2)], {
+                type: 'application/json'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `britech-profile-${userProfile.clientId}-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showPopup('Success!', 'Your data has been exported successfully', 'success');
+            logActivity('Exported profile data', 'settings');
+        }
+
+        function clearCache() {
+            if ('caches' in window) {
+                caches.keys().then(names => {
+                    names.forEach(name => {
+                        caches.delete(name);
+                    });
+                });
+            }
+            
+            showPopup('Success!', 'Cache cleared successfully', 'success');
+            logActivity('Cleared cache', 'settings');
+        }
+
+        function confirmDeleteAccount() {
+            showConfirmDialog(
+                'Delete Account',
+                'This action cannot be undone. All your data will be permanently deleted.',
+                'deleteAccount'
+            );
+        }
+
+        async function deleteAccount() {
+            try {
+                setLoadingState(true);
+                
+                // Delete user data from Firestore
+                await window.updateDoc(window.doc(window.db, 'users', currentUser.uid), {
+                    deleted: true,
+                    deletedAt: window.serverTimestamp()
+                });
+                
+                // Delete profile picture from storage
+                if (userProfile.profilePicture) {
+                    try {
+                        const picRef = window.ref(window.storage, userProfile.profilePicture);
+                        await window.deleteObject(picRef);
+                    } catch (error) {
+                        console.warn('Could not delete profile picture:', error);
+                    }
+                }
+                
+                showPopup('Account Deleted', 'Your account has been scheduled for deletion', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Error deleting account:', error);
+                showPopup('Error', 'Failed to delete account', 'error');
+            } finally {
+                setLoadingState(false);
+            }
+        }
+
+        function showConfirmDialog(title, message, action) {
+            document.getElementById('confirmTitle').textContent = title;
+            document.getElementById('confirmMessage').textContent = message;
+            document.getElementById('confirmDialog').classList.add('active');
+            pendingAction = action;
+        }
+
+        function closeConfirmDialog() {
+            document.getElementById('confirmDialog').classList.remove('active');
+            pendingAction = null;
+        }
+
+        function executeConfirmedAction() {
+            closeConfirmDialog();
+            
+            switch (pendingAction) {
+                case 'deleteAccount':
+                    deleteAccount();
+                    break;
+            }
+        }
+
+        function showPopup(title, message, type = 'success') {
+            const overlay = document.getElementById('popupOverlay');
+            const icon = document.getElementById('popupIcon');
+            const titleEl = document.getElementById('popupTitle');
+            const messageEl = document.getElementById('popupMessage');
+
+            titleEl.textContent = title;
+            messageEl.textContent = message;
+
+            // Set icon based on type
+            icon.className = `popup-icon ${type}`;
+            const iconMap = {
+                'success': 'fas fa-check-circle',
+                'error': 'fas fa-exclamation-circle',
+                'warning': 'fas fa-exclamation-triangle'
+            };
+            icon.innerHTML = `<i class="${iconMap[type] || iconMap['success']}"></i>`;
+
+            overlay.classList.add('active');
+        }
+
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('active');
+        }
+
+        function setLoadingState(loading) {
+            isLoading = loading;
+            const buttons = document.querySelectorAll('button:not(.close-profile-btn)');
+            
+            buttons.forEach(btn => {
+                if (loading) {
+                    btn.disabled = true;
+                    if (!btn.classList.contains('toggle-switch')) {
+                        btn.style.opacity = '0.6';
+                    }
+                } else {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                }
+            });
+        }
+
+        function closeProfile() {
+            if (hasUnsavedChanges) {
+                if (confirm('You have unsaved changes. Are you sure you want to leave?')) {
+                    const card = document.querySelector('.profile-card');
+                    card.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        window.location.href = "client-portal1.html";
+                    }, 300);
+                }
+            } else {
+                const card = document.querySelector('.profile-card');
+                card.classList.add('fade-out');
+
+                setTimeout(() => {
+                    window.location.href = "client-portal1.html";
+                }, 300);
+            }
+        }
+
+        // Close popups when clicking overlay
+        document.getElementById('popupOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        document.getElementById('confirmDialog').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConfirmDialog();
+            }
+        });
+
+        // Warn user about unsaved changes when leaving page
+        window.addEventListener('beforeunload', function(e) {
+            if (hasUnsavedChanges) {
+                e.preventDefault();
+                e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+                return 'You have unsaved changes. Are you sure you want to leave?';
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+S or Cmd+S to save
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                if (hasUnsavedChanges) {
+                    saveAllChanges();
+                }
+            }
+            
+            // Escape to close popups
+            if (e.key === 'Escape') {
+                if (document.getElementById('popupOverlay').classList.contains('active')) {
+                    closePopup();
+                }
+                if (document.getElementById('confirmDialog').classList.contains('active')) {
+                    closeConfirmDialog();
+                }
+                if (document.getElementById('passwordForm').classList.contains('active')) {
+                    togglePasswordForm();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

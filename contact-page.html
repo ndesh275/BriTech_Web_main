@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - BriTech Prime</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="logo-container">
+                <img src="app-icon.jpeg" alt="BriTech Logo" class="logo">
+            
+            </div>
+
+
+            <style>
+               /* Logo + text */
+                .logo-container {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                cursor: pointer;
+                }
+
+                /* Logo image styling */
+                .logo {
+                height: 42px;
+                width: 42px;
+                border-radius: 12px; /* rounded corners */
+                box-shadow: 0 4px 10px rgba(106, 17, 203, 0.4); /* purple glow */
+                transition: transform 0.3s ease;
+                }
+
+                .logo:hover {
+                transform: scale(1.08); /* subtle zoom on hover */
+                }
+                
+            </style>
+
+            <div class="nav-brand">
+                <h2>BriTech Prime</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services-page.html" class="nav-link">Services</a>
+                <a href="portfolio-page.html" class="nav-link">Portfolio</a>
+                <a href="about-page.html" class="nav-link">About</a>
+                <a href="contact-page.html" class="nav-link active">Contact</a>
+                <!-- <a href="client-portal.html" class="nav-portal">Client Portal</a> -->
+            </div>
+            <button class="get-quote-btn">Get Free Quote</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-comments"></i>
+                    <span>Let's Connect</span>
+                </div>
+                <h1>Get In Touch With Our Team</h1>
+                <p>Ready to transform your business with cutting-edge technology? We'd love to hear about your project and discuss how we can help you achieve your digital goals.</p>
+                
+                <div class="quick-contact">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-label">Call us directly</span>
+                            <span class="contact-value">+254 713 738 815</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-label">Email us</span>
+                            <span class="contact-value">brianwanderi123@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="card-header">
+                        <div class="dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="file-name">contact.js</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-line">
+                            <span class="keyword">const</span> 
+                            <span class="variable">contact</span> 
+                            <span class="operator">=</span> 
+                            <span class="bracket">{</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">"response"</span><span class="operator">:</span> 
+                            <span class="string">"24h"</span><span class="operator">,</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">"location"</span><span class="operator">:</span> 
+                            <span class="string">"Nairobi"</span><span class="operator">,</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="property">"available"</span><span class="operator">:</span> 
+                            <span class="boolean">true</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="bracket">};</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h2>Send us a message</h2>
+                        <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="company">Company Name</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="service">Service Interested In</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="app-development">App Development</option>
+                                    <option value="tech-consultation">Tech Consultation</option>
+                                    <option value="it-support">IT Support</option>
+                                    <option value="digital-marketing">Digital Marketing</option>
+                                    <option value="training">Training & Workshops</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="budget">Project Budget</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-50k">Under KSh 50,000</option>
+                                    <option value="50k-150k">KSh 50,000 - 150,000</option>
+                                    <option value="150k-500k">KSh 150,000 - 500,000</option>
+                                    <option value="500k-1m">KSh 500,000 - 1,000,000</option>
+                                    <option value="over-1m">Over KSh 1,000,000</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-field">
+                                <label for="message">Project Details</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, goals, and any specific requirements..." required></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-field">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <label for="newsletter">I'd like to receive updates about BriTech Prime services and industry insights</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info-container">
+                    <div class="info-section">
+                        <h3>Get in touch</h3>
+                        <p>We're here to help and answer any question you might have. We look forward to hearing from you.</p>
+                        
+                        <div class="info-items">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Visit Our Office</h4>
+                                    <p>Kiamumbi,Kiambu County Kenya<br>
+                                    Quito Street</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Call Us</h4>
+                                    <p>+254 713 738 815<br>
+                                   
+                                    Mon-Fri, 8AM-6PM EAT</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Email Us</h4>
+                                    <p>brianwanderi123@gmail.com<br>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="info-details">
+                                    <h4>Business Hours</h4>
+                                    <p>Monday - Friday: 8:00 AM - 6:00 PM<br>
+                                    Saturday: 9:00 AM - 2:00 PM<br>
+                                    Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-section">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link linkedin">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="#" class="social-link twitter">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="social-link facebook">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Response -->
+                    <div class="response-guarantee">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="guarantee-text">
+                            <h4>Quick Response Guarantee</h4>
+                            <p>We respond to all inquiries within 24 hours during business days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-header">
+                <h2>Find Us</h2>
+                <p>Located in the heart of Nairobi's business district</p>
+            </div>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-content">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>BriTech Prime Office</h3>
+                        <p>Nairobi CBD, Kimathi Street<br>3rd Floor, Building XYZ</p>
+                        <a href="#" class="directions-btn">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about our services</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How long does a typical web development project take?</h4>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Project timelines vary based on complexity and scope. A simple website typically takes 2-4 weeks, while complex web applications can take 8-16 weeks. We'll provide a detailed timeline during our initial consultation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do you provide ongoing support and maintenance?</h4>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer comprehensive support and maintenance packages to keep your digital solutions running smoothly. This includes regular updates, security monitoring, and technical support.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What is your pricing structure?</h4>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer competitive, transparent pricing tailored to each project's requirements. We provide detailed quotes after understanding your specific needs and can work with various budget ranges.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do you work with international clients?</h4>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While we're based in Nairobi, we serve clients across East Africa and internationally. We're experienced in remote collaboration and can work across different time zones.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What technologies do you specialize in?</h4>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with modern technologies including React, Node.js, Python, PHP, mobile app development (iOS/Android), cloud platforms (AWS, Azure), and various CMS platforms.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can you help with digital marketing and SEO?</h4>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We offer comprehensive digital marketing services including SEO, social media management, content marketing, and online advertising campaigns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BriTech Prime</h3>
+                    <p>Transforming Ideas Into Digital Solutions</p>
+                    <div class="footer-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nairobi, Kenya</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Services</h4>
+                        <a href="services-page.html">Web Development</a>
+                        <a href="services-page.html">App Development</a>
+                        <a href="services-page.html">IT Support</a>
+                        <a href="#">Consultation</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <a href="about-page.html">About Us</a>
+                        <a href="portfolio-page.html">Portfolio</a>
+                        <a href="contact-page.html">Contact</a>
+                        <a href="#">Client Portal</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Connect</h4>
+                        <a href="https://www.linkedin.com/in/brian-wanderi-githua-9aa738384/">LinkedIn</a>
+                        <a href="https://x.com/wandesh275">Twitter</a>
+                        <a href="https://www.facebook.com/brian.githua.370/about_overview">Facebook</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BriTech Prime. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <script>
+        let map;
+        let marker;
+        
+        // Initialize Google Map
+        function initMap() {
+            // Coordinates for Kiamumbi, Kiambu County (approximate location)
+            const officeLocation = { lat: -1.1741, lng: 36.9081 };
+            
+            map = new google.maps.Map(document.getElementById("googleMap"), {
+                zoom: 15,
+                center: officeLocation,
+                styles: [
+                    {
+                        featureType: "all",
+                        elementType: "geometry.fill",
+                        stylers: [{ color: "#f5f5f5" }]
+                    },
+                    {
+                        featureType: "water",
+                        elementType: "geometry",
+                        stylers: [{ color: "#e9e9e9" }]
+                    }
+                ]
+            });
+
+            marker = new google.maps.Marker({
+                position: officeLocation,
+                map: map,
+                title: "BriTech Prime Office",
+                animation: google.maps.Animation.DROP,
+                icon: {
+                    url: 'data:image/svg+xml;base64,' + btoa(`
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="18" fill="#4c63d2" stroke="white" stroke-width="2"/>
+                            <text x="20" y="26" text-anchor="middle" fill="white" font-size="20" font-family="Arial">📍</text>
+                        </svg>
+                    `),
+                    scaledSize: new google.maps.Size(40, 40),
+                    anchor: new google.maps.Point(20, 40)
+                }
+            });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: `
+                    <div style="padding: 10px; font-family: Arial, sans-serif;">
+                        <h3 style="margin: 0 0 10px 0; color: #4c63d2;">BriTech Prime</h3>
+                        <p style="margin: 0; color: #666;">
+                            Quito Street, House No. 45<br>
+                            Kiamumbi, Kiambu County<br>
+                            Kenya
+                        </p>
+                        <div style="margin-top: 10px;">
+                            <a href="https://maps.google.com/?q=Kiamumbi,Kiambu+County,Quito+Street,House+45" 
+                               target="_blank" 
+                               style="color: #4c63d2; text-decoration: none; font-weight: bold;">
+                                Open in Google Maps →
+                            </a>
+                        </div>
+                    </div>
+                `
+            });
+
+            marker.addListener("click", () => {
+                infoWindow.open(map, marker);
+            });
+            
+            // Auto-open info window
+            setTimeout(() => {
+                infoWindow.open(map, marker);
+            }, 500);
+        }
+        
+        // Show map function
+        function showMap() {
+            const placeholder = document.getElementById('mapPlaceholder');
+            const mapDiv = document.getElementById('googleMap');
+            
+            placeholder.style.display = 'none';
+            mapDiv.style.display = 'block';
+            
+            // Initialize map if not already done
+            if (!map) {
+                initMap();
+            } else {
+                // Trigger resize to ensure map displays correctly
+                setTimeout(() => {
+                    google.maps.event.trigger(map, 'resize');
+                    map.setCenter({ lat: -1.1741, lng: 36.9081 });
+                }, 100);
+            }
+        }
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = question.querySelector('i');
+                
+                faqItem.classList.toggle('active');
+                
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.classList.replace('fa-plus', 'fa-minus');
+                } else {
+                    answer.style.maxHeight = '0';
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitBtn.style.background = 'linear-gradient(135deg, #28a745 0%, #20c997 100%)';
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                document.getElementById('contactForm').reset();
+            }, 3000);
+        });
+    </script>
+</body>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand h2 {
+    color: #4c63d2;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link.active {
+    color: #4c63d2;
+}
+
+.nav-link:hover {
+    color: #4c63d2;
+}
+
+.nav-portal {
+    color: #4c63d2;
+    border: 2px solid #4c63d2;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-portal:hover {
+    background: #4c63d2;
+    color: white;
+}
+
+.get-quote-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.get-quote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 150px 0 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.quick-contact {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-label {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.contact-value {
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.floating-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    min-width: 300px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(-10px); }
+    50% { transform: translateY(10px); }
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.dots {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff5f57;
+}
+
+.dots span:nth-child(2) { background: #ffbd2e; }
+.dots span:nth-child(3) { background: #28ca42; }
+
+.file-name {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.code-line {
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+    color: #333;
+}
+
+.indent {
+    padding-left: 1rem;
+}
+
+.keyword { color: #af00db; }
+.variable { color: #001080; }
+.property { color: #0451a5; }
+.string { color: #008000; }
+.boolean { color: #0000ff; }
+.operator, .bracket { color: #000; }
+
+/* Contact Section */
+.contact-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+/* Contact Form */
+.contact-form-container {
+    background: #f8f9fa;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.form-header p {
+    color: #666;
+    font-size: 1.125rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.875rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: #4c63d2;
+    box-shadow: 0 0 0 3px rgba(76, 99, 210, 0.1);
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.checkbox-field input[type="checkbox"] {
+    margin-top: 0.25rem;
+    width: 18px;
+    height: 18px;
+    accent-color: #4c63d2;
+}
+
+.checkbox-field label {
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Contact Information */
+.contact-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.info-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.info-section > p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    gap: 1rem;
+}
+
+.info-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.info-details h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.info-details p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Social Media */
+.social-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.social-section h4 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    border-color: #4c63d2;
+    color: #4c63d2;
+    transform: translateY(-2px);
+}
+
+.social-link.linkedin:hover {
+    border-color: #0077b5;
+    color: #0077b5;
+}
+
+.social-link.twitter:hover {
+    border-color: #1da1f2;
+    color: #1da1f2;
+}
+
+.social-link.facebook:hover {
+    border-color: #1877f2;
+    color: #1877f2;
+}
+
+.social-link.instagram:hover {
+    border-color: #e4405f;
+    color: #e4405f;
+}
+
+/* Response Guarantee */
+.response-guarantee {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.guarantee-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.guarantee-text h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.guarantee-text p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Map Section */
+.map-section {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.map-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.map-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.map-header p {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.map-placeholder {
+    height: 400px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+}
+
+.map-content {
+    text-align: center;
+}
+
+.map-content i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.map-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.map-content p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.directions-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.directions-btn:hover {
+    background: white;
+    color: #4c63d2;
+    border-color: white;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.faq-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.faq-header p {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #4c63d2;
+}
+
+.faq-item.active {
+    border-color: #4c63d2;
+    box-shadow: 0 5px 20px rgba(76, 99, 210, 0.1);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.faq-question h4 {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.faq-question i {
+    color: #4c63d2;
+    transition: all 0.3s ease;
+    font-size: 1.125rem;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-answer p {
+    padding: 0 1.5rem 1.5rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand h3 {
+    color: #4c63d2;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.footer-brand p {
+    margin-bottom: 1.5rem;
+    color: #ccc;
+    font-size: 1.125rem;
+}
+
+.footer-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #999;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.link-group h4 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: white;
+}
+
+.link-group a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.link-group a:hover {
+    color: #4c63d2;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-section .container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .quick-contact {
+        flex-direction: column;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form-container {
+        padding: 2rem;
+    }
+    
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-form-container,
+    .info-section,
+    .social-section {
+        padding: 1.5rem;
+    }
+    
+    .map-header h2,
+    .faq-header h2 {
+        font-size: 2rem;
+    }
+}
+
+</style>
+
+<!-- Email JS Below -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script src="emailJS.js"></script>
